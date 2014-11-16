@@ -5,6 +5,7 @@ export default Ember.Route.extend({
     var url = "/c/" + params.slug + ".json";
     var result = $.getJSON(url).then(
       function(response) {
+        response.category_slug = params.slug;
         return response;
         // return response.data.children.map(function (child) {
         //   return App.RedditLink.create(child.data);
@@ -14,7 +15,7 @@ export default Ember.Route.extend({
     return result;
   },
   setupController: function(controller, model) {
-    controller.set('model', model.topic_list.topics);
+    controller.set('model', model);
   }
 
 

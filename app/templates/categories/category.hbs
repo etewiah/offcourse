@@ -3,7 +3,7 @@
   <div class="">
 		<ul>
 
-		{{#each item in model }}
+		{{#each item in model.topic_list.topics }}
 		<li>
 			{{#link-to 'categories.category.topic' item.id }}
 			  {{ item.title }}

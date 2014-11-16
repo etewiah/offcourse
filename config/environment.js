@@ -48,8 +48,23 @@ module.exports = function(environment) {
   //   'script-src': "'self' http://meta.discourse.org http://klavado.com", // Allow scripts from https://cdn.mxpnl.com
   //   'font-src': "'self' http://fonts.gstatic.com", // Allow fonts to be loaded from http://fonts.gstatic.com
   //   'connect-src': "'self' http://meta.discourse.org http://klavado.com http://custom-api.local", // Allow data (ajax/websocket) from api.mixpanel.com and custom-api.local
-  //   'img-src': "'self'",
+  //   // 'img-src': "'self'",
+  //   'img-src': "*",
   //   'style-src': "'self' 'unsafe-inline' http://fonts.googleapis.com", // Allow inline styles and loaded CSS from http://fonts.googleapis.com 
+  //   'media-src': "'self'"
+  // }
+  ENV.contentSecurityPolicy = {
+    'img-src': "*",
+    'style-src': "'self' 'unsafe-inline' http://fonts.googleapis.com"
+  }
+  // ['img-src'] = "*";
+  //  {
+  //   'default-src': "'none'",
+  //   'script-src': "'self'",
+  //   'font-src': "'self'",
+  //   'connect-src': "'self'",
+  //   'img-src': "*",
+  //   'style-src': "'self'",
   //   'media-src': "'self'"
   // }
 

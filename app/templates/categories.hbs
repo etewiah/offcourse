@@ -3,7 +3,7 @@
 
 	<ul>
 
-	{{#each item in model }}
+	{{#each item in model.category_list.categories }}
 	<li>
 		{{#link-to 'categories.category' item.slug }}
 		  {{ item.name }}

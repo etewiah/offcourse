@@ -19,7 +19,7 @@ export default Ember.Route.extend({
   },
 
   setupController: function(controller, model) {
-    controller.set('model', model.category_list.categories);
+    controller.set('model', model);
   }
 });
 

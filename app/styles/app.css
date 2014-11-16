@@ -7,4 +7,5 @@ html, body {
 }
 .topics-list{
 	float: left;
+	width: 74%;
 }

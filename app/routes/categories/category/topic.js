@@ -17,6 +17,11 @@ export default Ember.Route.extend({
     controller.set('model', model);
     var categoryController = this.controllerFor('categories.category');
     categoryController.set('isTopicView',true);
+    controller.set('category_slug', categoryController.get('model.category_slug'));
+  },
+  deactivate: function(){
+    var categoryController = this.controllerFor('categories.category');
+    categoryController.set('isTopicView',false);
   }
 
 
