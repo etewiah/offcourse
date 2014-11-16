@@ -13,7 +13,7 @@ export default Ember.Route.extend({
     return this.store.find('site');
   },
 
-  setupController: function(controller, model) {
-    controller.set('content', model);
-  }
+  // setupController: function(controller, model) {
+  //   controller.set('content', model);
+  // }
 });

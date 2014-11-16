@@ -1,5 +1,14 @@
 Pick a site:
 
-.site-name
+<ul>
+
+{{#each item in model}}
+<li>
+	{{ item.title }}
+</li>
+{{/each}}
+
+</ul>
+
 
 {{outlet}}
