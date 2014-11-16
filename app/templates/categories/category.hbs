@@ -1,16 +1,22 @@
 
-<h2>This is a given category</h2>
+{{#unless isTopicView}}
+  <div class="">
+		<ul>
 
+		{{#each item in model }}
+		<li>
+			{{#link-to 'categories.category.topic' item.id }}
+			  {{ item.title }}
+			{{/link-to}}
 
-<div class="">
-	<ul>
+		</li>
+		{{/each}}
 
-	{{#each item in model }}
-	<li>
-		{{ item.title }}
-	</li>
-	{{/each}}
+		</ul>
 
-	</ul>
+	</div>
+{{/unless}}
 
+<div>
+	{{outlet}}
 </div>

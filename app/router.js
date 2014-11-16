@@ -21,18 +21,19 @@ Router.map(function() {
       this.route('default', {
         path: '/'
       });
-      // this.resource('categories.category.gig', {
-      //   path: '/:gig_slug'
-      // }, function() {
+      this.resource('categories.category.topic', {
+        path: '/:id'
+      }, function() {
 
-      //   this.route('default', {
-      //     path: '/'
-      //   });
-      // });
+        this.route('default', {
+          path: '/'
+        });
+      });
     });
   });
 
   this.route('categories/category');
+  this.route('categories/category/topic');
 });
 
 export default Router;

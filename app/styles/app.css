@@ -5,3 +5,6 @@ html, body {
   float: left;
   width: 25%;
 }
+.topics-list{
+	float: left;
+}
