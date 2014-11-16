@@ -7,7 +7,32 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
   this.resource('sites', function() { });
-  this.resource('categories', function() { });
+  // this.resource('categories', function() { });
+  this.resource('categories', {
+    // path: '/categories/:country'
+  }, function() {
+    this.route('default', {
+      path: '/'
+    });
+    // had to add above to prevent view getting rendered twice on homepage..
+    this.resource('categories.category', {
+      path: '/:slug'
+    }, function() {
+      this.route('default', {
+        path: '/'
+      });
+      // this.resource('categories.category.gig', {
+      //   path: '/:gig_slug'
+      // }, function() {
+
+      //   this.route('default', {
+      //     path: '/'
+      //   });
+      // });
+    });
+  });
+
+  this.route('categories/category');
 });
 
 export default Router;

@@ -1,3 +1,7 @@
 html, body {
   margin: 20px;
 }
+.categories-list {
+  float: left;
+  width: 25%;
+}

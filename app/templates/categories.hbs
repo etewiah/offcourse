@@ -1,14 +1,20 @@
-Pick a category:
+<div class="categories-list">
+	Pick a category:
 
-<ul>
+	<ul>
 
-{{#each item in model }}
-<li>
-	{{ item.name }}
-</li>
-{{/each}}
+	{{#each item in model }}
+	<li>
+		{{#link-to 'categories.category' item.slug }}
+		  {{ item.name }}
+		{{/link-to}}
+	</li>
+	{{/each}}
 
-</ul>
+	</ul>
 
+</div>
 
-{{outlet}}
+<div class="topics-list" >
+	{{outlet}}
+</div>
