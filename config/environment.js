@@ -4,7 +4,7 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'offcourse',
     environment: environment,
-    baseURL: '/',
+    baseURL: '/offcourse/',
     locationType: 'auto',
     EmberENV: {
       FEATURES: {

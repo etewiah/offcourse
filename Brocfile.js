@@ -2,7 +2,13 @@
 
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
-var app = new EmberApp();
+var app = new EmberApp({
+  fingerprint: {
+    prepend: '/plugins/Klavado/',
+    generateRailsManifest: true
+  }
+});
+
 
 app.import('bower_components/pouchdb/dist/pouchdb.js');
 app.import('bower_components/relational-pouch/dist/pouchdb.relational-pouch.js');
