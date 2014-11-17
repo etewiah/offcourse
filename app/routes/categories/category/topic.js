@@ -5,9 +5,10 @@ export default Ember.Route.extend({
     saveOffline: function() {
       var store = this.store;
       var model = this.controller.get('model');
-
+debugger;
       var topic = store.createRecord('topic', {
         title: model.title,
+        post_stream: model.post_stream,
         id: model.id
       });
       topic.save();
