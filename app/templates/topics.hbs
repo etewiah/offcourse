@@ -1,1 +1,18 @@
+<div class="offline-topics-list">
+	Offline topics:
+
+	<ul>
+
+	{{#each topic in model.content }}
+	<li>
+		{{#link-to 'topics.topic' topic.id }}
+		  {{ topic.title }}
+		{{/link-to}}
+	</li>
+	{{/each}}
+
+	</ul>
+
+</div>
+
 {{outlet}}

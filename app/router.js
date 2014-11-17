@@ -33,8 +33,17 @@ Router.map(function() {
   });
 
   this.route('categories/category');
-  this.route('categories/category/topic');
-  this.resource('topics', function() { });
+  // this.route('categories/category/topic');
+  this.resource('topics', function() { 
+      this.resource('topics.topic', {
+        path: '/:id'
+      }, function() {
+
+        this.route('default', {
+          path: '/'
+        });
+      });
+    });
 });
 
 export default Router;

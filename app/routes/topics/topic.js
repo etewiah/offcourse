@@ -1,9 +1,5 @@
 import Ember from 'ember';
 
-export default Ember.Route.extend({});
-
-import Ember from 'ember';
-
 export default Ember.Route.extend({
   actions: {
     saveOffline: function() {
@@ -20,11 +16,11 @@ export default Ember.Route.extend({
     retrieveFromPouchDb: function() {
       var model_id = this.controller.get('model.id');
       var topic = this.store.find('topic', model_id);
-      topic.then(function(res) {
+      topic.then(function(res){
         debugger;
       });
       var topics = this.store.find('topic');
-      topics.then(function(res) {
+      topics.then(function(res){
         debugger;
       });
 
@@ -32,18 +28,20 @@ export default Ember.Route.extend({
   },
 
   model: function(params) {
-    var topics = this.store.find('topic');
-    topics.then(function(res) {
-    });
-    return topics;
+    var url = "/t/" + params.id + ".json";
+    var result = $.getJSON(url).then(
+      function(response) {
+        return response;
+        // return response.data.children.map(function (child) {
+        //   return App.RedditLink.create(child.data);
+        // });
+      }
+    );
+    return result;
   },
   setupController: function(controller, model) {
     controller.set('model', model);
-  },
-  // deactivate: function() {
-  //   var categoryController = this.controllerFor('categories.category');
-  //   categoryController.set('isTopicView', false);
-  // }
-
+    debugger;
+  }
 
 });

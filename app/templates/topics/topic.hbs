@@ -1,0 +1,29 @@
+<div class="row">
+		{{#link-to 'categories.category' model.category_slug }}
+		   back to topics list
+		{{/link-to}}
+
+		<button {{action "saveOffline"}} > Save offline </button>
+
+		<button {{action "retrieveFromPouchDb"}} > Retrieve Topic from PouchDb </button>
+
+</div>
+
+<div class="topic-details">
+	
+<h4>{{ model.fancy_title }}</h4>
+
+<div class="">
+	<ul>
+
+	{{#each item in model.post_stream.posts }}
+	<div>
+		  {{{ item.cooked }}}
+
+	</div>
+	{{/each}}
+
+	</ul>
+
+</div>
+</div>

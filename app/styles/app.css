@@ -1,7 +1,7 @@
 html, body {
   margin: 20px;
 }
-.categories-list {
+.categories-list, .offline-topics-list {
   float: left;
   width: 25%;
 }
