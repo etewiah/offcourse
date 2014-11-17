@@ -4,8 +4,12 @@ var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 var app = new EmberApp({
   fingerprint: {
+  	enabled: false,
     prepend: '/plugins/Klavado/',
-    generateRailsManifest: true
+    generateRailsManifest: true,
+    generateAssetMap: true,
+    extensions: ['css'],
+    replaceExtensions: ['html', 'css', 'appcache']
   }
 });
 
