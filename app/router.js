@@ -9,7 +9,7 @@ Router.map(function() {
   this.resource('sites', function() { });
   // this.resource('categories', function() { });
   this.resource('categories', {
-    // path: '/categories/:country'
+    path: '/online/categories'
   }, function() {
     this.route('default', {
       path: '/'
@@ -34,6 +34,7 @@ Router.map(function() {
 
   this.route('categories/category');
   this.route('categories/category/topic');
+  this.resource('topics', function() { });
 });
 
 export default Router;
