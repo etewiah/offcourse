@@ -31,6 +31,10 @@
       {{/if}}
     </div>
 
+    <div>
+      <a href="" {{action 'destroyAllOfflineTopics'}} >Remove all offline topics</a>
+    </div>
+
     {{#if controllers.Application.navigatorIsOnline }}
     <span>Application says: Navigator is online</span>
     {{else}}

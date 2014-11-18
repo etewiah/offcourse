@@ -6,6 +6,22 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   actions: {
+    destroyAllOfflineTopics: function() {
+      //   this.store.find('topic').then(function(topics) {
+      //     debugger;
+      //     topics.destroy(); 
+      //   });
+      // this.get('store').findAll('topic').invoke('destroyRecord');
+      this.get('store').findAll('topic').then(function(record) {
+        record.content.forEach(function(rec) {
+          debugger;
+          Ember.run.once(this, function() {
+            rec.deleteRecord();
+            rec.save();
+          });
+        }, this);
+      });
+    }
   },
 
   model: function(params) {
