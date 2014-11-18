@@ -1,9 +1,6 @@
 CACHE MANIFEST
 /offcourse
-/plugins/Klavado/assets/vendor.css
-/plugins/Klavado/assets/offcourse.css
-/plugins/Klavado/assets/vendor.js
-/plugins/Klavado/assets/offcourse.js
-/categories.json
-/c/germany.json
-/t/26.json
+/plugins/Offcourse/assets/vendor.css
+/plugins/Offcourse/assets/offcourse.css
+/plugins/Offcourse/assets/vendor.js
+/plugins/Offcourse/assets/offcourse.js

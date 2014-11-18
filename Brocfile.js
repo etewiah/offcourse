@@ -4,13 +4,22 @@ var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 var app = new EmberApp({
   fingerprint: {
-  	enabled: false,
+    enabled: false,
     prepend: '/plugins/Klavado/',
     generateRailsManifest: true,
     generateAssetMap: true,
     extensions: ['css'],
     replaceExtensions: ['html', 'css', 'appcache']
+  },
+
+  // https://github.com/ember-addons/bootstrap-for-ember/issues/87
+  // temp fix till bootstrap_for_ember is fixed:
+  vendorFiles: {
+    'handlebars.js': {
+      production: 'bower_components/handlebars/handlebars.js'
+    }
   }
+
 });
 
 
