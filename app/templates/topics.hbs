@@ -1,18 +1,22 @@
-<div class="offline-topics-list">
-	Offline topics:
+<div class="offline-topics">
 
-	<ul>
+  <div class="col-md-3">
+    <div class="bs-sidebar hidden-print affix-top" role="complementary">
+      Offlint ts:
+      <ul class="nav bs-sidenav">
+        <ul>
 
-	{{#each topic in model.content }}
-	<li>
-		{{#link-to 'topics.topic' topic.id }}
-		  {{ topic.title }}
-		{{/link-to}}
-	</li>
-	{{/each}}
+          {{#each topic in model.content }}
+          <li>
+            {{#link-to 'topics.topic' topic.id }} {{ topic.title }} {{/link-to}}
+          </li>
+          {{/each}}
 
-	</ul>
+        </ul>
 
+    </div>
+  </div>
+  <div class="col-md-9" role="main">
+  	{{ outlet }}
+	</div>
 </div>
-
-{{outlet}}

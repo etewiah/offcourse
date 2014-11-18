@@ -15,7 +15,6 @@ export default Ember.Route.extend({
     return topics;
   },
   setupController: function(controller, model) {
-    debugger;
     controller.set('model', model);
   },
   // deactivate: function() {

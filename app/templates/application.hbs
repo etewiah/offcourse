@@ -1,16 +1,20 @@
-<div class="row">
-	<h2 id='title'>
-		{{#link-to 'index'  }}
-		  Offcourse
-		{{/link-to}}
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    
+        <h2 id='title'>
+      {{#link-to 'index' }} Offcourse {{/link-to}}
 
-		<small>		{{#link-to 'topics'  }}
-		  Go offline..
-		{{/link-to}}</small>
+      <small>{{#link-to 'topics' }} Go offline.. {{/link-to}}
+      </small>
 
-</h2>
+    </h2>
+  </div>
+</nav>
 
+<div class="container">
 
+  <div class="row">
+  </div>
+
+  {{outlet}}
 </div>
-
-{{outlet}}

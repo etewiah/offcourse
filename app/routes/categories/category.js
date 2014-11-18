@@ -1,6 +1,11 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+  actions: {
+    saveTopicsOffline: function(){
+      debugger;
+    }
+  },
   model: function(params) {
     var url = "/c/" + params.slug + ".json";
     var result = $.getJSON(url).then(
@@ -16,6 +21,7 @@ export default Ember.Route.extend({
   },
   setupController: function(controller, model) {
     controller.set('model', model);
+    controller.set('selectedTopics', []);
   }
 
 
