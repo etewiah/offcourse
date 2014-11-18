@@ -5,7 +5,6 @@ export default Ember.Route.extend({
     saveOffline: function() {
       var store = this.store;
       var model = this.controller.get('model');
-debugger;
       var topic = store.createRecord('topic', {
         title: model.title,
         post_stream: model.post_stream,
@@ -18,11 +17,9 @@ debugger;
       var model_id = this.controller.get('model.id');
       var topic = this.store.find('topic', model_id);
       topic.then(function(res){
-        debugger;
       });
       var topics = this.store.find('topic');
       topics.then(function(res){
-        debugger;
       });
 
     }
@@ -33,9 +30,6 @@ debugger;
     var result = $.getJSON(url).then(
       function(response) {
         return response;
-        // return response.data.children.map(function (child) {
-        //   return App.RedditLink.create(child.data);
-        // });
       }
     );
     return result;
