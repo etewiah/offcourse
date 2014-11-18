@@ -10,8 +10,7 @@ export default Ember.Route.extend({
         // alert('Sorry, invalid url');
         return;
       };
-      var apiUrl = Category.getApiUrl(targetDiscourseUrl);
-debugger;
+      var apiUrl = Category.getIndexApiUrl(targetDiscourseUrl);
       // var url = "/remote_discourse/categories.json?host=" + targetDiscourseUrl;
       var that = this;
       var result = $.getJSON(apiUrl).then(
@@ -24,8 +23,11 @@ debugger;
   },
 
   model: function(params) {
-    var url = "/categories.json";
-    var result = $.getJSON(url).then(
+    // var categoriesController = this.controllerFor('categories');
+    // categoriesController.set('domainName','klavado');
+    // debugger;
+    var apiUrl = Category.getIndexApiUrl();
+    var result = $.getJSON(apiUrl).then(
       function(response) {
         return response;
       }

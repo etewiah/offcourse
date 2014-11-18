@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import Category from '../../models/category';
 
 export default Ember.Route.extend({
   actions: {
@@ -22,8 +23,11 @@ export default Ember.Route.extend({
     }
   },
   model: function(params) {
-    var url = "/c/" + params.slug + ".json";
-    var result = $.getJSON(url).then(
+    var categoriesController = this.controllerFor('categories');
+    var domainName = categoriesController.get('domainName');
+    var apiUrl = Category.getTopicListApiUrl(params.slug, domainName);
+
+    var result = $.getJSON(apiUrl).then(
       function(response) {
         response.category_slug = params.slug;
         return response;
