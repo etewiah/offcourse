@@ -1,4 +1,35 @@
 <div class="row">
+<h3>Displaying info from klavado.com</h3>	
+
+  <form {{action "changeDomain" on="submit"}}>
+    <table>
+      <tr>
+        <td style="" class="label">
+          <label for='domain-name'>
+          </label>
+        </td>
+      </tr>
+      <tr class="input">
+        <td style="">
+          {{input placeholder="domain name" value=domainName id="domain-name" autofocus="autofocus"}}
+        </td>
+        <td>
+          <button class='btn btn-small btn-primary' {{action 'changeDomain'}}>
+            Go
+          </button>
+        </td>
+      </tr>
+
+      <tr class="instructions">
+        <td>
+          <label></label>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
+
+<div class="row">
   <div class="col-md-3 categories-list">
     Pick a category:
 

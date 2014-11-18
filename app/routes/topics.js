@@ -12,9 +12,9 @@ export default Ember.Route.extend({
       //     topics.destroy(); 
       //   });
       // this.get('store').findAll('topic').invoke('destroyRecord');
+// above does not work
       this.get('store').findAll('topic').then(function(record) {
         record.content.forEach(function(rec) {
-          debugger;
           Ember.run.once(this, function() {
             rec.deleteRecord();
             rec.save();
