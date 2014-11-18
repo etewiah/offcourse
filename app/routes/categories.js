@@ -1,15 +1,23 @@
 import Ember from 'ember';
+import Category from '../models/category';
 
 export default Ember.Route.extend({
   actions: {
     changeDomain: function() {
-      var url = "/remote_discourse/categories.json?host=https://meta.discourse.org";
+      var targetDiscourseUrl = this.controller.get('domainName');
+      var valid = /^(ftp|http|https):\/\/[^ "]+$/.test(targetDiscourseUrl);
+      if (!valid) {
+        // alert('Sorry, invalid url');
+        return;
+      };
+      var apiUrl = Category.getApiUrl(targetDiscourseUrl);
+debugger;
+      // var url = "/remote_discourse/categories.json?host=" + targetDiscourseUrl;
       var that = this;
-      var result = $.getJSON(url).then(
+      var result = $.getJSON(apiUrl).then(
         function(response) {
           that.controller.set('model',response);
-          debugger;
-          // return response;
+          // debugger;
         }
       );
     }
