@@ -25,8 +25,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
       <ul class="nav navbar-nav navbar-right">
-        <li>{{#link-to 'index' }} Online{{/link-to}}</li>
-        <li>{{#link-to 'topics' }} Offline {{/link-to}}</li>
+        <li>{{#link-to 'categories' }} Online{{/link-to}}</li>
       </ul>
     </div>
   </div>
@@ -34,8 +33,20 @@
 
 <div class="container offcourse-main">
 
-  <div class="row">
-  </div>
-
   {{outlet}}
+
+  <div class="row">
+    <div class="well">
+      {{#if controller.navigatorIsOnline }}
+        <span>Navigator is online</span>
+      {{else}}
+        <span>Navigator is online</span>
+      {{/if}}
+      {{#if controller.networkIsOnline }}
+        <span>Network is online</span>
+      {{else}}
+        <span>Network is online</span>
+      {{/if}}
+    </div>
+  </div>
 </div>
