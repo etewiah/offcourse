@@ -1,5 +1,8 @@
 {
   "predef": [
+    "$",
+    "EmberPouch",
+    "PouchDB",
     "document",
     "window",
     "-Promise"

@@ -32,9 +32,11 @@ Router.map(function() {
     });
   });
 
-  this.route('categories/category');
+  // this.route('categories/category');
   // this.route('categories/category/topic');
-  this.resource('topics', function() { 
+  this.resource('topics', {
+    path: '/offline/topics'
+  }, function() { 
       this.resource('topics.topic', {
         path: '/:id'
       }, function() {
