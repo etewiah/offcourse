@@ -1,20 +1,32 @@
-<div class="categories-list">
-	Pick a category:
+<div class="row">
+  <div class="col-md-3 categories-list">
+    Pick a category:
 
-	<ul>
+    <ul>
 
-	{{#each item in model.category_list.categories }}
-	<li>
-		{{#link-to 'categories.category' item.slug }}
-		  {{ item.name }}
-		{{/link-to}}
-	</li>
-	{{/each}}
+      {{#each item in model.category_list.categories }}
+      <li>
+        {{#link-to 'categories.category' item.slug }} {{ item.name }} {{/link-to}}
+      </li>
+      {{/each}}
 
-	</ul>
+    </ul>
+
+  </div>
+
+  <div class="col-md-9 topics-list">
+    {{outlet}}
+  </div>
 
 </div>
 
-<div class="topics-list" >
-	{{outlet}}
+<div class="row">
+  <div class="well">
+    {{#if offlineTopicsCount}}
+      <span>You have {{ offlineTopicsCount }} topics viewable {{#link-to 'topics'  }} 
+      offline. {{/link-to}} </span>
+    {{else}}
+      <span>You do not have topics viewable offline.</span>
+    {{/if}}
+  </div>
 </div>

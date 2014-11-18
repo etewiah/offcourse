@@ -17,21 +17,28 @@
     </div>
   </div>
   <div class="col-md-9" role="main">
-  	{{ outlet }}
-	</div>
+    {{ outlet }}
+  </div>
 </div>
 
 <div class="row">
   <div class="well">
-      {{#if controllers.Application.navigatorIsOnline }}
-        <span>Application says: Navigator is online</span>
+    <div>
+      {{#if offlineTopicsCount}}
+      <span>You have {{ offlineTopicsCount }} topics viewable offline. {{#link-to 'categories' }} Go online to add more. {{/link-to}}</span>
       {{else}}
-        <span>Application says: Navigator is online</span>
+      <span>You do not have topics viewable offline. {{#link-to 'categories' }} Go online to add some. {{/link-to}}</span>
       {{/if}}
-      {{#if controllers.Application.networkIsOnline }}
-        <span>Application says: Network is online</span>
-      {{else}}
-        <span>Application says: Network is online</span>
-      {{/if}}
+    </div>
+
+    {{#if controllers.Application.navigatorIsOnline }}
+    <span>Application says: Navigator is online</span>
+    {{else}}
+    <span>Application says: Navigator is online</span>
+    {{/if}} {{#if controllers.Application.networkIsOnline }}
+    <span>Application says: Network is online</span>
+    {{else}}
+    <span>Application says: Network is online</span>
+    {{/if}}
   </div>
 </div>

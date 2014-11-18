@@ -20,6 +20,10 @@ export default Ember.Route.extend({
 
   setupController: function(controller, model) {
     controller.set('model', model);
+    var topics = this.store.find('topic');
+    topics.then(function(res) {
+      this.controller.set('offlineTopicsCount', res.content.length);
+    }.bind(this));
   }
 });
 
