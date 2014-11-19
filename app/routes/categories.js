@@ -4,29 +4,49 @@ import Category from '../models/category';
 export default Ember.Route.extend({
   actions: {
     changeDomain: function() {
-      var targetDiscourseUrl = this.controller.get('domainName');
+      var targetDiscourseUrl = this.controller.get('domainUrl');
       var valid = /^(ftp|http|https):\/\/[^ "]+$/.test(targetDiscourseUrl);
       if (!valid) {
         // alert('Sorry, invalid url');
         return;
       };
-      this.controller.set('currentSourceDomain', targetDiscourseUrl);
+      var domain = targetDiscourseUrl.split('/')[2] || targetDiscourseUrl.split('/')[0];
+      var domainTitle = domain.replace(/\./g, ' ');
+      var domainId = domain.replace(/\./g, '_');
+
+      this.controller.set('currentSourceId', domainId);
+      // targetDiscourseUrl can be in an invalid state while currentSourceUrl is only set after having been validated
+      this.controller.set('currentSourceUrl', targetDiscourseUrl);
       var apiUrl = Category.getIndexApiUrl(targetDiscourseUrl);
       // var url = "/remote_discourse/categories.json?host=" + targetDiscourseUrl;
       var that = this;
       var result = $.getJSON(apiUrl).then(
         function(response) {
-          that.controller.set('model',response);
+          that.controller.set('model', response);
           that.transitionTo('categories');
         }
       );
+
+      var pouchSite = that.store.createRecord('site', {
+        title: domainTitle,
+        url: targetDiscourseUrl,
+        id: domainId
+      });
+      // pouchSite.save().then(function(res){
+      //   debugger;
+      // }.bind(this));
     }
   },
 
   model: function(params) {
+    var discourseUrl = this.get('controller.currentSourceUrl');
+    if (discourseUrl) {
+      var apiUrl = Category.getIndexApiUrl(discourseUrl);
+    } else {
+      var apiUrl = Category.getIndexApiUrl();
+    };
     // var categoriesController = this.controllerFor('categories');
-    // categoriesController.set('domainName','klavado');
-    var apiUrl = Category.getIndexApiUrl();
+    // categoriesController.set('domainUrl','klavado');
     var result = $.getJSON(apiUrl).then(
       function(response) {
         return response;
