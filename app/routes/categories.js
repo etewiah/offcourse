@@ -16,7 +16,7 @@ export default Ember.Route.extend({
       var result = $.getJSON(apiUrl).then(
         function(response) {
           that.controller.set('model',response);
-          // debugger;
+          that.transitionTo('categories');
         }
       );
     }
@@ -25,7 +25,6 @@ export default Ember.Route.extend({
   model: function(params) {
     // var categoriesController = this.controllerFor('categories');
     // categoriesController.set('domainName','klavado');
-    // debugger;
     var apiUrl = Category.getIndexApiUrl();
     var result = $.getJSON(apiUrl).then(
       function(response) {

@@ -27,19 +27,20 @@ export default Ember.Route.extend({
   },
 
   model: function(params) {
-    var url = "/t/" + params.id + ".json";
-    var result = $.getJSON(url).then(
-      function(response) {
-        return response;
-        // return response.data.children.map(function (child) {
-        //   return App.RedditLink.create(child.data);
-        // });
-      }
-    );
-    return result;
+    var topic = this.store.find('topic', params.id);
+
+    // var url = "/t/" + params.id + ".json";
+    // var topic = $.getJSON(url).then(
+    //   function(response) {
+    //     return response;
+    //   }
+    // );
+    return topic;
   },
   setupController: function(controller, model) {
-    controller.set('model', model);
+    // debugger;
+    controller.set('model', model.get('data'));
+    // controller.set('model',model);
   }
 
 });

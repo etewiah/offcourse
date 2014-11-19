@@ -15,17 +15,12 @@ Category.reopenClass({
   },
   getTopicListApiUrl: function(categorySlug, targetDiscourseUrl) {
     if (targetDiscourseUrl) {
-    	var url = "/remote_discourse/topics_per_category.json?category=" + categorySlug + "&host=" + targetDiscourseUrl;
-      debugger;
-
-      // var url = "/remote_discourse/categories.json?host=" + targetDiscourseUrl;
+      var url = "/remote_discourse/topics_per_category.json?category=" + categorySlug + "&host=" + targetDiscourseUrl;
     } else {
       var url = "/c/" + categorySlug + ".json";
-
     };
     return url;
   }
-
 });
 
 export default Category;
