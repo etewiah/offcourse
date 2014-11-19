@@ -7,7 +7,7 @@ export default Ember.Route.extend({
     saveTopicsOffline: function() {
       var categoriesController = this.controllerFor('categories');
       var domainUrl = categoriesController.get('currentSourceUrl');
-      var domainId = categoriesController.get('currentSourceId');
+      var domainId = categoriesController.get('currentSourceId') || "klavado";
 
       var selectedTopics = this.controller.get('selectedTopics');
       selectedTopics.forEach(function(topic) {
