@@ -10,6 +10,7 @@ export default Ember.Route.extend({
         // alert('Sorry, invalid url');
         return;
       };
+      this.controller.set('currentSourceDomain', targetDiscourseUrl);
       var apiUrl = Category.getIndexApiUrl(targetDiscourseUrl);
       // var url = "/remote_discourse/categories.json?host=" + targetDiscourseUrl;
       var that = this;

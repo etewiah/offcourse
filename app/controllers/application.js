@@ -5,7 +5,7 @@ export default Ember.Controller.extend({
 
   networkIsOnline: true,  // assume we're online until proven wrong
   init: function () {
-    // this.updateNetworkStatus();
+    this.updateNetworkStatus();
   },
 
   updateNetworkStatus: function () {
@@ -14,10 +14,11 @@ export default Ember.Controller.extend({
     //   this.set('isOnline', false);
     //   return; // return early, no point in pinging the server if we have no LAN
     // }
-    Ember.$.get('http://happensesame.com').done(function () {
+    Ember.$.get('https://cors-test.appspot.com/test').done(function () {
       // todo: consider checking the result
       appController.set('networkIsOnline', true);
     }).fail(function () {
+      debugger;
       appController.set('networkIsOnline', false);    
     }).always(function () {
       Ember.run.later(appController, 'updateNetworkStatus', 60000);

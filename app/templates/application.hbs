@@ -9,10 +9,10 @@
       </button>
 
       <div class="navbar-brand" id='title'>
-        {{#link-to 'index' }} Offcourse {{/link-to}}
+      <h2 style="margin:0px">        {{#link-to 'index' }} Offcourse {{/link-to}}
 
-        <small>View discourse topics offline
-        </small>
+        <small>- view discourse topics offline
+        </small></h2>
 
       </div>
 
@@ -24,9 +24,9 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-      <ul class="nav navbar-nav navbar-right">
+{{!--       <ul class="nav navbar-nav navbar-right">
         <li>{{#link-to 'categories' }} Online{{/link-to}}</li>
-      </ul>
+      </ul> --}}
     </div>
   </div>
 </nav>
@@ -40,12 +40,12 @@
       {{#if controller.navigatorIsOnline }}
         <span>Navigator is online</span>
       {{else}}
-        <span>Navigator is online</span>
+        <span>Navigator is offline</span>
       {{/if}}
       {{#if controller.networkIsOnline }}
         <span>Network is online</span>
       {{else}}
-        <span>Network is online</span>
+        <span>Network is offline</span>
       {{/if}}
     </div>
   </div>

@@ -9,7 +9,7 @@ Router.map(function() {
   this.resource('sites', function() { });
   // this.resource('categories', function() { });
   this.resource('categories', {
-    path: '/online/cats'
+    path: '/retrieve/cats'
   }, function() {
     this.route('default', {
       path: '/'
