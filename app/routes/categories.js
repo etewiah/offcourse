@@ -43,12 +43,14 @@ export default Ember.Route.extend({
   },
 
   model: function(params) {
-    var networkIsOnline = this.controllerFor('application').get('networkIsOnline');
-    if (!networkIsOnline) {
-      this.transitionTo('topics');
-      Bootstrap.GNM.push('ERROR!', 'It looks like you are offline', 'error');
+    // var networkIsOnline = this.controllerFor('application').get('networkIsOnline');
+    // if (!networkIsOnline) {
+    //   this.transitionTo('topics');
+    //   Bootstrap.GNM.push('ERROR!', 'It looks like you are offline', 'error');
 
-    };
+    // };
+// above is not a good idea - on first load, network online status might be wrong
+
     var discourseUrl = this.controllerFor('categories').get('currentSourceUrl');
     // TODO - use a setting for the default url
     if (!discourseUrl) {

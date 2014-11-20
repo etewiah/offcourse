@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   // http://stackoverflow.com/questions/22122570/ember-js-network-connectivity-check-at-startup-and-listener
 
-  networkIsOnline: true, // assume we're online until proven wrong
+  networkIsOnline: false, // assume we're offline until proven wrong
   init: function() {
     this.updateNetworkStatus();
   },
