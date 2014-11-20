@@ -39,4 +39,16 @@ app.import('bower_components/ember-pouch/dist/globals/main.js');
 // please specify an object with the list of modules as keys
 // along with the exports of each module as its value.
 
+/*
+  This example is more verbose than necessary for the sake of illustration.
+  You could, for example, include the Font Awesome assets as a Broccoli tree.
+*/
+app.import("bower_components/font-awesome/css/font-awesome.css");
+app.import("bower_components/font-awesome/fonts/fontawesome-webfont.eot", { destDir: "fonts" });
+app.import("bower_components/font-awesome/fonts/fontawesome-webfont.svg", { destDir: "fonts" });
+app.import("bower_components/font-awesome/fonts/fontawesome-webfont.ttf", { destDir: "fonts" });
+app.import("bower_components/font-awesome/fonts/fontawesome-webfont.woff", { destDir: "fonts" });
+app.import("bower_components/font-awesome/fonts/FontAwesome.otf", { destDir: "fonts" });
+
+
 module.exports = app.toTree();

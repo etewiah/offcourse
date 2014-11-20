@@ -12,7 +12,8 @@ export default Ember.Route.extend({
       //     topics.destroy(); 
       //   });
       // this.get('store').findAll('topic').invoke('destroyRecord');
-// above does not work
+      // above does not work
+      var that = this;
       this.get('store').findAll('topic').then(function(record) {
         record.content.forEach(function(rec) {
           Ember.run.once(this, function() {
@@ -20,9 +21,11 @@ export default Ember.Route.extend({
             rec.save();
           });
         }, this);
-      }).then(function(result){
-        debugger;
-      });
+      }).then(function() {
+        // this.growl.info("Yep, it's working.");
+        // Bootstrap.GNM.push('INFO!', 'Hello, this is just an info message.', 'info');
+        Bootstrap.GNM.push('SUCCESS!', 'All offline topics removed!', 'success');
+      }.bind(this));
     }
   },
 

@@ -1,10 +1,13 @@
-<div>
-  <h3>Topics available to view offline:</h3>
-</div>
 
 {{#if noOfflineTopics }}
-<span>You do not have topics viewable offline. {{#link-to 'categories' }} Go online to add some. {{/link-to}}</span>
+<div>
+  <h3>You do not have topics viewable offline. <small>{{#link-to 'categories' }} Go online to add some. {{/link-to}}</small> </h3>
+</div>
+
 {{else}}
+<div>
+  <h3>Topics available to view offline.  <small>{{#link-to 'categories' }} Go online to add more. {{/link-to}}</small> </h3>
+</div>
 
 <div class="row offline-topics">
   <div class="col-md-3">
@@ -33,6 +36,8 @@
       <span>You have {{ offlineTopicsCount }} topics viewable offline. {{#link-to 'categories' }} Go online to add more. {{/link-to}}</span>
     </div>
     <div>
+    with icon
+    <span class="icon"><i class="fa fa-check"></i></span>
       <a href="" {{action 'destroyAllOfflineTopics'}}>Remove all offline topics</a>
     </div>
 
