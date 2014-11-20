@@ -8,26 +8,31 @@ export default Ember.Route.extend({
       var categoriesController = this.controllerFor('categories');
       var domainUrl = categoriesController.get('currentSourceUrl');
       var domainId = categoriesController.get('currentSourceId') || "klavado";
-
+debugger;
       var selectedTopics = this.controller.get('selectedTopics');
       selectedTopics.forEach(function(topic) {
-        // var url = "/t/" + topic.id + ".json";
+
         var apiUrl = Topic.getTopicDetailsApiUrl(topic.id, domainUrl);
         var that = this;
         var result = $.getJSON(apiUrl).then(
           function(detailedTopic) {
           // debugger;
-            var id = domainId + "_" + detailedTopic.id;
+            var namespacedId = domainId + "_" + detailedTopic.id;
+
             var pouchTopic = that.store.createRecord('topic', {
               title: detailedTopic.title,
               post_stream: detailedTopic.post_stream,
-              id: id
+              originalId: detailedTopic.id,
+              sourceSiteId: domainId,
+              namespacedId: namespacedId
             });
             pouchTopic.save();
           }
         );
 
       }.bind(this));
+      Bootstrap.GNM.push('SUCCESS!', 'Selected topics added', 'success');
+
       // var offlineTopicsCount = categoriesController.get('offlineTopicsCount');
       // offlineTopicsCount = offlineTopicsCount + selectedTopics.length;
       // above will be inaccurate if selections includes items already in store
@@ -49,9 +54,8 @@ export default Ember.Route.extend({
     }
   },
   model: function(params) {
-    var categoriesController = this.controllerFor('categories');
-    var domainUrl = categoriesController.get('domainUrl');
-    var apiUrl = Category.getTopicListApiUrl(params.slug, domainUrl);
+    var currentSourceUrl = this.controllerFor('categories').get('currentSourceUrl');
+    var apiUrl = Category.getTopicListApiUrl(params.slug, currentSourceUrl);
 
     var result = $.getJSON(apiUrl).then(
       function(response) {

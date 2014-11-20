@@ -42,13 +42,19 @@ export default Ember.Route.extend({
   },
 
   model: function(params) {
-    var discourseUrl = this.get('controller.currentSourceUrl');
-    var apiUrl;
-    if (discourseUrl) {
-      apiUrl = Category.getIndexApiUrl(discourseUrl);
-    } else {
-      apiUrl = Category.getIndexApiUrl();
-    }
+    var discourseUrl = this.controllerFor('categories').get('currentSourceUrl');
+    // this.get('controller.currentSourceUrl');
+    if (!discourseUrl) {
+      discourseUrl = "http://klavado.com";
+      this.controllerFor('categories').set('currentSourceUrl',discourseUrl)
+      // this.set('controller.currentSourceUrl', discourseUrl);
+    };
+    var apiUrl = Category.getIndexApiUrl(discourseUrl);
+    // if (discourseUrl) {
+    //   apiUrl = Category.getIndexApiUrl(discourseUrl);
+    // } else {
+    //   apiUrl = Category.getIndexApiUrl();
+    // }
     // var categoriesController = this.controllerFor('categories');
     // categoriesController.set('domainUrl','klavado');
     var result = $.getJSON(apiUrl).then(

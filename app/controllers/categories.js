@@ -2,7 +2,12 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 	needs: ['Application'],
-	currentSourceUrl: "http://klavado.com"
+
+  // will set below in categories route as I won't have this value available in model hook
+  // on first load
+	// currentSourceUrl: "http://klavado.com"
+
+
 	// offlineTopicsCount: function() {
 	// 	// debugger;
  //    var topics = this.store.find('topic');
