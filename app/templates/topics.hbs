@@ -1,8 +1,14 @@
-<div class="row offline-topics">
+<div>
+  <h3>Topics available to view offline:</h3>
+</div>
 
+{{#if noOfflineTopics }}
+<span>You do not have topics viewable offline. {{#link-to 'categories' }} Go online to add some. {{/link-to}}</span>
+{{else}}
+
+<div class="row offline-topics">
   <div class="col-md-3">
     <div class="bs-sidebar hidden-print affix-top" role="complementary">
-      Offline Topics:
       <ul class="nav bs-sidenav">
         <ul>
 
@@ -24,18 +30,13 @@
 <div class="row">
   <div class="well">
     <div>
-      {{#if offlineTopicsCount}}
       <span>You have {{ offlineTopicsCount }} topics viewable offline. {{#link-to 'categories' }} Go online to add more. {{/link-to}}</span>
-      {{else}}
-      <span>You do not have topics viewable offline. {{#link-to 'categories' }} Go online to add some. {{/link-to}}</span>
-      {{/if}}
     </div>
-
     <div>
-      <a href="" {{action 'destroyAllOfflineTopics'}} >Remove all offline topics</a>
+      <a href="" {{action 'destroyAllOfflineTopics'}}>Remove all offline topics</a>
     </div>
 
-    {{#if controllers.Application.navigatorIsOnline }}
+    {{!-- {{#if controllers.Application.navigatorIsOnline }}
     <span>Application says: Navigator is online</span>
     {{else}}
     <span>Application says: Navigator is offline</span>
@@ -43,6 +44,7 @@
     <span>Application says: Network is online</span>
     {{else}}
     <span>Application says: Network is offline</span>
-    {{/if}}
+    {{/if}} --}}
   </div>
 </div>
+{{/if}}

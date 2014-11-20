@@ -9,7 +9,7 @@ export default Ember.Route.extend({
       if (!valid) {
         // alert('Sorry, invalid url');
         return;
-      };
+      }
       var domain = targetDiscourseUrl.split('/')[2] || targetDiscourseUrl.split('/')[0];
       var domainTitle = domain.replace(/\./g, ' ');
       var domainId = domain.replace(/\./g, '_');
@@ -19,15 +19,8 @@ export default Ember.Route.extend({
       this.controller.set('currentSourceUrl', targetDiscourseUrl);
       var apiUrl = Category.getIndexApiUrl(targetDiscourseUrl);
       // var url = "/remote_discourse/categories.json?host=" + targetDiscourseUrl;
-      var that = this;
-      var result = $.getJSON(apiUrl).then(
-        function(response) {
-          that.controller.set('model', response);
-          that.transitionTo('categories');
-        }
-      );
-
-      var pouchSite = that.store.createRecord('site', {
+      
+      that.store.createRecord('site', {
         title: domainTitle,
         url: targetDiscourseUrl,
         id: domainId
@@ -35,16 +28,27 @@ export default Ember.Route.extend({
       // pouchSite.save().then(function(res){
       //   debugger;
       // }.bind(this));
+
+      var that = this;
+      $.getJSON(apiUrl).then(
+        function(response) {
+          that.controller.set('model', response);
+          that.transitionTo('categories');
+        }
+      );
+
+
     }
   },
 
   model: function(params) {
     var discourseUrl = this.get('controller.currentSourceUrl');
+    var apiUrl;
     if (discourseUrl) {
-      var apiUrl = Category.getIndexApiUrl(discourseUrl);
+      apiUrl = Category.getIndexApiUrl(discourseUrl);
     } else {
-      var apiUrl = Category.getIndexApiUrl();
-    };
+      apiUrl = Category.getIndexApiUrl();
+    }
     // var categoriesController = this.controllerFor('categories');
     // categoriesController.set('domainUrl','klavado');
     var result = $.getJSON(apiUrl).then(

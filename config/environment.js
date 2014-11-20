@@ -55,6 +55,7 @@ module.exports = function(environment) {
   // }
   ENV.contentSecurityPolicy = {
     'img-src': "*",
+    'connect-src': "'self' https://cors-test.appspot.com", 
     'style-src': "'self' 'unsafe-inline' http://fonts.googleapis.com"
   }
   // ['img-src'] = "*";

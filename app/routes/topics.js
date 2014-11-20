@@ -20,6 +20,8 @@ export default Ember.Route.extend({
             rec.save();
           });
         }, this);
+      }).then(function(result){
+        debugger;
       });
     }
   },

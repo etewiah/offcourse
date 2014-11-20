@@ -10,11 +10,10 @@ var Topic = DS.Model.extend({
 
 Topic.reopenClass({
   getTopicDetailsApiUrl: function(TopicId, targetDiscourseUrl) {
+    var url = "/t/" + TopicId + ".json";
     if (targetDiscourseUrl) {
-      var url = "/remote_discourse/topic_details.json?topic_id=" + TopicId + "&host=" + targetDiscourseUrl;
-    } else {
-      var url = "/t/" + TopicId + ".json";
-    };
+      url = "/remote_discourse/topic_details.json?topic_id=" + TopicId + "&host=" + targetDiscourseUrl;
+    }
     return url;
   }
 });
