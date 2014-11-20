@@ -8,30 +8,52 @@ export default Ember.Route.extend({
       var categoriesController = this.controllerFor('categories');
       var domainUrl = categoriesController.get('currentSourceUrl');
       var domainId = categoriesController.get('currentSourceId') || "klavado";
-debugger;
       var selectedTopics = this.controller.get('selectedTopics');
+      if (!selectedTopics || selectedTopics.length < 1) {
+        Bootstrap.GNM.push('ERROR!', 'Please select topics to save', 'error');
+      } else {
+        // TODO - actually ensure topis are saved before showing this
+        Bootstrap.GNM.push('SUCCESS!', 'Selected topics added', 'success');
+      };
       selectedTopics.forEach(function(topic) {
 
         var apiUrl = Topic.getTopicDetailsApiUrl(topic.id, domainUrl);
         var that = this;
         var result = $.getJSON(apiUrl).then(
           function(detailedTopic) {
-          // debugger;
+            // debugger;
             var namespacedId = domainId + "_" + detailedTopic.id;
 
-            var pouchTopic = that.store.createRecord('topic', {
+            var topicProperties = {
               title: detailedTopic.title,
               post_stream: detailedTopic.post_stream,
               originalId: detailedTopic.id,
               sourceSiteId: domainId,
-              namespacedId: namespacedId
-            });
-            pouchTopic.save();
+              id: namespacedId
+            };
+
+            Topic.findOrCreate(that.store, 'topic', topicProperties);
+
+            // var pouchTopic = that.store.createRecord('topic', {
+            //   title: detailedTopic.title,
+            //   post_stream: detailedTopic.post_stream,
+            //   originalId: detailedTopic.id,
+            //   sourceSiteId: domainId,
+            //   id: namespacedId
+            // });
+            // debugger;
+            // pouchTopic.save().then(function(result) {
+            //     debugger;
+            //   },
+            //   function(error) {
+            //     debugger;
+            //   }
+
+            // );
           }
         );
 
       }.bind(this));
-      Bootstrap.GNM.push('SUCCESS!', 'Selected topics added', 'success');
 
       // var offlineTopicsCount = categoriesController.get('offlineTopicsCount');
       // offlineTopicsCount = offlineTopicsCount + selectedTopics.length;

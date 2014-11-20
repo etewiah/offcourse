@@ -18,25 +18,21 @@ Topic.reopenClass({
     }
     return url;
   },
-
-
-        // equivalent of findOrCreate
-        // https://github.com/emberjs/data/issues/1523
-  // findOrCreate: function(type, properties) {
-  //   return this.store.find(type, properties.id).then(null, (function(_this) {
-  //     return function(reason) {
-  //       var record;
-  //       if (reason.status === 404) {
-  //         record = _this.store.recordForId(type, properties.id);
-  //         record.loadedData();
-  //         record.setProperties(properties);
-  //         return record.save();
-  //       } else {
-  //         throw reason;
-  //       }
-  //     };
-  //   })(this));
-  // }
+  findOrCreate: function(store, type, properties) {
+    return store.find(type, properties.id).then(null, (function(_this) {
+      return function(reason) {
+        var record;
+        // if (reason.status === 404) {
+          record = store.recordForId(type, properties.id);
+          record.loadedData();
+          record.setProperties(properties);
+          return record.save();
+        // } else {
+        //   throw reason;
+        // }
+      };
+    })(this));
+  }
 });
 
 export default Topic;

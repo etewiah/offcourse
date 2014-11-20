@@ -20,11 +20,12 @@ export default Ember.Route.extend({
       var apiUrl = Category.getIndexApiUrl(targetDiscourseUrl);
       // var url = "/remote_discourse/categories.json?host=" + targetDiscourseUrl;
       
-      that.store.createRecord('site', {
+      this.store.createRecord('site', {
         title: domainTitle,
         url: targetDiscourseUrl,
         id: domainId
       });
+      this.controller.set('model', []);
       // pouchSite.save().then(function(res){
       //   debugger;
       // }.bind(this));
@@ -43,7 +44,7 @@ export default Ember.Route.extend({
 
   model: function(params) {
     var discourseUrl = this.controllerFor('categories').get('currentSourceUrl');
-    // this.get('controller.currentSourceUrl');
+    // TODO - use a setting for the default url
     if (!discourseUrl) {
       discourseUrl = "http://klavado.com";
       this.controllerFor('categories').set('currentSourceUrl',discourseUrl)
