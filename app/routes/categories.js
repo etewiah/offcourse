@@ -19,7 +19,7 @@ export default Ember.Route.extend({
       this.controller.set('currentSourceUrl', targetDiscourseUrl);
       var apiUrl = Category.getIndexApiUrl(targetDiscourseUrl);
       // var url = "/remote_discourse/categories.json?host=" + targetDiscourseUrl;
-      
+
       this.store.createRecord('site', {
         title: domainTitle,
         url: targetDiscourseUrl,
@@ -43,21 +43,21 @@ export default Ember.Route.extend({
   },
 
   model: function(params) {
+    var networkIsOnline = this.controllerFor('application').get('networkIsOnline');
+    if (!networkIsOnline) {
+      this.transitionTo('topics');
+      Bootstrap.GNM.push('ERROR!', 'It looks like you are offline', 'error');
+
+    };
     var discourseUrl = this.controllerFor('categories').get('currentSourceUrl');
     // TODO - use a setting for the default url
     if (!discourseUrl) {
       discourseUrl = "http://klavado.com";
-      this.controllerFor('categories').set('currentSourceUrl',discourseUrl)
-      // this.set('controller.currentSourceUrl', discourseUrl);
+      this.controllerFor('categories').set('currentSourceUrl', discourseUrl)
+        // this.set('controller.currentSourceUrl', discourseUrl);
     };
     var apiUrl = Category.getIndexApiUrl(discourseUrl);
-    // if (discourseUrl) {
-    //   apiUrl = Category.getIndexApiUrl(discourseUrl);
-    // } else {
-    //   apiUrl = Category.getIndexApiUrl();
-    // }
-    // var categoriesController = this.controllerFor('categories');
-    // categoriesController.set('domainUrl','klavado');
+
     var result = $.getJSON(apiUrl).then(
       function(response) {
         return response;

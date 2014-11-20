@@ -1,6 +1,16 @@
 CACHE MANIFEST
-/offcourse
+      
+# This is a comment
+
+CACHE:
 /plugins/Offcourse/assets/vendor.css
 /plugins/Offcourse/assets/offcourse.css
 /plugins/Offcourse/assets/vendor.js
 /plugins/Offcourse/assets/offcourse.js
+
+
+FALLBACK:
+/ /offcourse
+
+NETWORK:
+*

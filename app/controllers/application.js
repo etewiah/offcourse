@@ -21,7 +21,6 @@ export default Ember.Controller.extend({
         debugger;
       }
     }).fail(function(result) {
-      debugger;
       appController.set('networkIsOnline', false);
     }).always(function() {
       Ember.run.later(appController, 'updateNetworkStatus', 60000);
