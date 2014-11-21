@@ -6,12 +6,13 @@
 
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h4>{{ model.title }}</h4>
+      <h4>{{ model.display_name }}</h4>
     </div>
-{{!--     <div class="panel-body">
+    <div class="panel-body">
+     <p>{{ model.description }}</p>
     </div>
- --}}
-    <ul class="list-group">
+
+{{!--     <ul class="list-group">
 
       {{#each item in model.post_stream.posts }}
       <li class="list-group-item">
@@ -19,7 +20,7 @@
       </li>
       {{/each}}
 
-    </ul>
+    </ul> --}}
 
   </div>
 

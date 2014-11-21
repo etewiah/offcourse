@@ -4,7 +4,8 @@ export default Ember.Route.extend({
   actions: {
     error: function(error, transition) {
       if (error) {
-        return this.transitionTo('topics');
+        debugger;
+        return this.transitionTo('sites');
       }
       // Return true to bubble this event to any parent route.
       return false;
@@ -12,9 +13,13 @@ export default Ember.Route.extend({
   },
 
   model: function(params) {
-    var url = "/remote_discourse/site_details.json?host=https://meta.discourse.org";
+    // TODO - search pouchDB if offline
+    var apiUrl = "/remote_discourse/get_or_add_site.json?slug=discuss_emberjs_com"
+    // Category.getSiteDetailsApiUrl(targetDiscourseUrl);
+
+    // var url = "/remote_discourse/site_details.json?host=https://meta.discourse.org";
     // var url = "/t/" + params.id + ".json";
-    var site = $.getJSON(url).then(
+    var site = $.getJSON(apiUrl).then(
       function(response) {
         return response;
       }
@@ -22,7 +27,8 @@ export default Ember.Route.extend({
     return site;
   },
   setupController: function(controller, model) {
-    controller.set('model',model);
+    debugger;
+    controller.set('model', model);
   }
 
 });
