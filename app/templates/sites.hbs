@@ -43,7 +43,7 @@
 
           {{#each site in model }}
           <li>
-            {{#link-to 'sites.site' site.id }} {{ site.title }} {{/link-to}}
+            {{#link-to 'sites.site' site.slug }} {{ site.display_name }} {{/link-to}}
           </li>
           {{/each}}
 

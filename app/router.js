@@ -10,7 +10,7 @@ Router.map(function() {
     path: '/sites'
   }, function() { 
       this.resource('sites.site', {
-        path: '/:id'
+        path: '/:slug'
       }, function() {
 
         this.route('default', {
