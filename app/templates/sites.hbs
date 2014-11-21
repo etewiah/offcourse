@@ -1,14 +1,38 @@
-Pick a site:
+<div>
+  <div style="">
+    {{input placeholder="eg: https://meta.discourse.org" value=domainUrl id="domain-url"
+     autofocus="autofocus"}}
+  </div>
+  <div>
+    <button class='btn btn-small btn-primary' {{action 'addSite'}}>
+      Go
+    </button>
+  </div>
+</div>
 
-<ul>
 
-{{#each item in model}}
-<li>
-	{{ item.title }}
-</li>
-{{/each}}
+<div>
+  <h3>Discourse sites</h3>
+</div>
 
-</ul>
+<div class="row offline-topics">
+  <div class="col-md-3">
+    <div class="bs-sidebar hidden-print affix-top" role="complementary">
+      <ul class="nav bs-sidenav">
+        <ul>
 
+          {{#each site in model }}
+          <li>
+            {{#link-to 'sites.site' site.id }} {{ site.title }} {{/link-to}}
+          </li>
+          {{/each}}
 
-{{outlet}}
+        </ul>
+
+    </div>
+  </div>
+  <div class="col-md-9" role="main">
+    {{ outlet }}
+  </div>
+</div>
+

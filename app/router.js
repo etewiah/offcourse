@@ -6,8 +6,19 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.resource('sites', function() { });
-  // this.resource('categories', function() { });
+  this.resource('sites', {
+    path: '/sites'
+  }, function() { 
+      this.resource('sites.site', {
+        path: '/:id'
+      }, function() {
+
+        this.route('default', {
+          path: '/'
+        });
+      });
+    });
+
   this.resource('categories', {
     path: '/retrieve/cats'
   }, function() {

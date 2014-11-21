@@ -1,0 +1,26 @@
+<div class="row">
+    Site details
+</div>
+
+<div class="topic-details">
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4>{{ model.title }}</h4>
+    </div>
+{{!--     <div class="panel-body">
+    </div>
+ --}}
+    <ul class="list-group">
+
+      {{#each item in model.post_stream.posts }}
+      <li class="list-group-item">
+        {{{ item.cooked }}}
+      </li>
+      {{/each}}
+
+    </ul>
+
+  </div>
+
+</div>
