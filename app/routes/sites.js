@@ -18,7 +18,7 @@ export default Ember.Route.extend({
       // this.controller.set('currentSourceUrl', targetDiscourseUrl);
 
       // var apiUrl = "/remote_discourse/get_or_add_site.json?slug=" + domainId;
-// only use slug instead of host if I'm sure site is in db
+      // only use slug instead of host if I'm sure site is in db
       var apiUrl = "/remote_discourse/get_or_add_site.json?host=" + targetDiscourseUrl;
 
       $.getJSON(apiUrl).then(
@@ -37,14 +37,13 @@ export default Ember.Route.extend({
   },
 
   model: function(params) {
-    // var store = this.store;
+    var apiUrl = "/remote_discourse/get_sites.json";
+    var sites = $.getJSON(apiUrl).then(
+      function(response) {
+        return response;
+      });
 
-    // var site = store.createRecord('site', {
-    //   title: 'Rails is Omakase',
-    // });
-    // site.save();
-
-    return this.store.find('site');
+    return sites;
   },
 
   setupController: function(controller, model) {
