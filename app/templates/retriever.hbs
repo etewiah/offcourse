@@ -2,25 +2,36 @@
   <h3>Select topics to view {{#link-to 'topics' }} offline. {{/link-to}}</h3>
 </div>
 <div class="row">
-  <div class="col-md-4">
-    <h6 style="margin-top: 5px;">Displaying info from {{ currentSourceUrl }}. 
-      Enter the base url for a discourse site to retrieve topics from that site:
-    </h6>
+  <div class="col-md-2">
+  <div>
+            <label class="control-label" >Displaying info from:</label>
   </div>
-  <div class="col-md-4">
-    {{select-2
+  </div>
+      <div class="col-md-4">
+          {{select-2
     content=model
     value=currentSite
     placeholder="Choose site"
     allow-clear=true
 }}
-  </div>
-  <div class="col-md-4">
-    <form class="domain-form" {{action "changeDomain" on="submit" }}>
+
+    </div>
+
+  <div class="col-md-6">
+    <form {{action "addSite" on="submit"}}>
+      <div class="form-group">
+        <label class="control-label" for='name'>Add a discourse site url:</label>
+        {{input placeholder="eg: https://meta.discourse.org" value=newSiteUrl id="domain-url"
+           autofocus="autofocus" class="form-control inline-input"}}
+      <button class="btn btn-primary" type="submit">Save</button>
+
+      </div>
+    </form>
+{{!--     <form class="domain-form" {{action "changeDomain" on="submit" }}>
       <table>
         <tr class="input">
           <td style="">
-            {{input placeholder="eg: https://meta.discourse.org" value=domainUrl id="domain-url" autofocus="autofocus"}}
+            {{input placeholder="eg: https://meta.discourse.org" value=newSiteUrl id="domain-url" autofocus="autofocus"}}
           </td>
           <td>
             <button class='btn btn-small btn-primary' {{action 'changeDomain'}}>
@@ -35,7 +46,7 @@
           </td>
         </tr>
       </table>
-    </form>
+    </form> --}}
   </div>
 
 </div>

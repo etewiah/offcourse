@@ -3,41 +3,30 @@ import Category from '../models/category';
 
 export default Ember.Route.extend({
   actions: {
-    changeDomain: function() {
-      var targetDiscourseUrl = this.controller.get('domainUrl');
+    addSite: function() {
+      var targetDiscourseUrl = this.controller.get('newSiteUrl');
       var valid = /^(ftp|http|https):\/\/[^ "]+$/.test(targetDiscourseUrl);
       if (!valid) {
-        // alert('Sorry, invalid url');
+        alert('Sorry, invalid url');
         return;
       }
       var domain = targetDiscourseUrl.split('/')[2] || targetDiscourseUrl.split('/')[0];
-      var domainTitle = domain.replace(/\./g, ' ');
       var domainId = domain.replace(/\./g, '_');
-
-      this.controller.set('currentSourceId', domainId);
-      // targetDiscourseUrl can be in an invalid state while currentSourceUrl is only set after having been validated
-      this.controller.set('currentSourceUrl', targetDiscourseUrl);
-      var apiUrl = Category.getIndexApiUrl(targetDiscourseUrl);
-      // var url = "/remote_discourse/categories.json?host=" + targetDiscourseUrl;
-
-      this.store.createRecord('site', {
-        title: domainTitle,
-        url: targetDiscourseUrl,
-        id: domainId
-      });
-      this.controller.set('model', []);
-      // pouchSite.save().then(function(res){
-      //   debugger;
-      // }.bind(this));
-
-      var that = this;
+      // only use slug instead of host if I'm sure site is in db
+      var apiUrl = "/remote_discourse/get_or_add_site.json?host=" + targetDiscourseUrl;
       $.getJSON(apiUrl).then(
         function(response) {
-          that.controller.set('model', response);
-          that.transitionTo('categories');
-        }
+          var site = this.store.createRecord('site', {
+            display_name: response.display_name,
+            description: response.description,
+            slug: response.slug,
+            base_url: response.base_url
+          });
+          site.save();
+          // this.controller.model.pushObject(response);
+          this.controller.set('currentSite',response);
+        }.bind(this)
       );
-
 
     }
   },

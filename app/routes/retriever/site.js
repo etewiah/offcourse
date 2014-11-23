@@ -28,5 +28,8 @@ export default Ember.Route.extend({
     var sitesModel = this.modelFor('retriever');
     var siteDetails = sitesModel.findBy('slug', this.paramsFor('retriever.site').slug);
     controller.set('siteDetails',siteDetails);
+    var retrieverController = this.controllerFor('retriever');
+    retrieverController.set('currentSite', siteDetails);
+    // below ensures site select2 control is populated correctly
   }
 });
