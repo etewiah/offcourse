@@ -49,7 +49,7 @@ export default Ember.Route.extend({
     //   Bootstrap.GNM.push('ERROR!', 'It looks like you are offline', 'error');
 
     // };
-// above is not a good idea - on first load, network online status might be wrong
+    // above is not a good idea - on first load, network online status might be wrong
 
     var discourseUrl = this.controllerFor('categories').get('currentSourceUrl');
     // TODO - use a setting for the default url
@@ -74,5 +74,17 @@ export default Ember.Route.extend({
     topics.then(function(res) {
       this.controller.set('offlineTopicsCount', res.content.length);
     }.bind(this));
+
+    var apiUrl = "/remote_discourse/get_sites.json";
+    $.getJSON(apiUrl).then(
+      function(response) {
+        var sites = [];
+        response.forEach(function(site){
+          site.text = site.base_url;
+          sites.push(site);
+        })
+        this.controller.set('sites', sites);
+
+      }.bind(this));
   }
 });

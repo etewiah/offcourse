@@ -39,6 +39,8 @@ app.import('bower_components/ember-pouch/dist/globals/main.js');
 // please specify an object with the list of modules as keys
 // along with the exports of each module as its value.
 
+app.import("bower_components/select2-bootstrap-css/select2-bootstrap.css");
+
 /*
   This example is more verbose than necessary for the sake of illustration.
   You could, for example, include the Font Awesome assets as a Broccoli tree.

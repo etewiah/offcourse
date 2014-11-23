@@ -7,7 +7,15 @@
       Enter the base url for a discourse site to retrieve topics from that site:
     </h6>
   </div>
-  <div class="col-md-8">
+  <div class="col-md-4">
+    {{select-2
+    content=controller.sites
+    value=domainUrl
+    placeholder="Choose site"
+    allow-clear=true
+}}
+  </div>
+  <div class="col-md-4">
     <form class="domain-form" {{action "changeDomain" on="submit" }}>
       <table>
         <tr class="input">
