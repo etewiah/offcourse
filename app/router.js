@@ -23,9 +23,9 @@ Router.map(function() {
   this.resource('retriever', {
     path: '/fetch'
   }, function() {
-    // this.route('default', {
-    //   path: '/'
-    // });
+    this.route('default', {
+      path: '/'
+    });
     // had to add above to prevent view getting rendered twice on homepage..
     this.resource('retriever.site', {
       path: '/:slug'
