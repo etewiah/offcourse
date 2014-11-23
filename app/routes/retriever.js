@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import Category from '../models/category';
+// import Category from '../models/category';
 
 export default Ember.Route.extend({
   actions: {
@@ -10,8 +10,8 @@ export default Ember.Route.extend({
         alert('Sorry, invalid url');
         return;
       }
-      var domain = targetDiscourseUrl.split('/')[2] || targetDiscourseUrl.split('/')[0];
-      var domainId = domain.replace(/\./g, '_');
+      // var domain = targetDiscourseUrl.split('/')[2] || targetDiscourseUrl.split('/')[0];
+      // var domainId = domain.replace(/\./g, '_');
       // only use slug instead of host if I'm sure site is in db
       var apiUrl = "/remote_discourse/get_or_add_site.json?host=" + targetDiscourseUrl;
       $.getJSON(apiUrl).then(
@@ -31,7 +31,7 @@ export default Ember.Route.extend({
     }
   },
 
-  model: function(params) {
+  model: function() {
     var apiUrl = "/remote_discourse/get_sites.json";
     var sites = $.getJSON(apiUrl).then(
       function(response) {
@@ -39,7 +39,7 @@ export default Ember.Route.extend({
         response.forEach(function(site){
           site.text = site.base_url;
           sitesArray.push(site);
-        })
+        });
         return sitesArray;
       }.bind(this));
     return sites;

@@ -33,37 +33,10 @@ export default Ember.Route.extend({
             };
 
             Topic.findOrCreate(that.store, 'topic', topicProperties);
-
-            // var pouchTopic = that.store.createRecord('topic', {
-            //   title: detailedTopic.title,
-            //   post_stream: detailedTopic.post_stream,
-            //   originalId: detailedTopic.id,
-            //   sourceSiteId: domainId,
-            //   id: namespacedId
-            // });
-            // debugger;
-            // pouchTopic.save().then(function(result) {
-            //     debugger;
-            //   },
-            //   function(error) {
-            //     debugger;
-            //   }
-
-            // );
           }
         );
 
       }.bind(this));
-
-      // var offlineTopicsCount = categoriesController.get('offlineTopicsCount');
-      // offlineTopicsCount = offlineTopicsCount + selectedTopics.length;
-      // above will be inaccurate if selections includes items already in store
-      // and below needs to run after all updates
-      // var topics = this.store.find('topic');
-      // topics.then(function(res) {
-      //   debugger;
-      //   categoriesController.set('offlineTopicsCount', res.content.length);
-      // }.bind(this));
 
     },
     error: function(error, transition) {

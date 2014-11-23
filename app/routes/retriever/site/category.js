@@ -1,8 +1,46 @@
 import Ember from 'ember';
-// import Category from '../../models/category';
+import Topic from '../../../models/topic';
 
 export default Ember.Route.extend({
-  actions: {
+   actions: {
+    saveTopicsOffline: function() {
+      // var categoriesController = this.controllerFor('categories');
+      // var hostUrl = categoriesController.get('currentSourceUrl');
+      // var hostSlug = categoriesController.get('currentSourceId') || "klavado";
+      var selectedTopics = this.controller.get('selectedTopics');
+      if (!selectedTopics || selectedTopics.length < 1) {
+        Bootstrap.GNM.push('ERROR!', 'Please select topics to save', 'error');
+      } else {
+        // TODO - actually ensure topis are saved before showing this
+        Bootstrap.GNM.push('SUCCESS!', 'Selected topics added', 'success');
+      };
+
+      var hostUrl = this.modelFor('retriever.site').siteDetails.base_url;
+      var hostSlug = this.modelFor('retriever.site').siteDetails.slug;
+      selectedTopics.forEach(function(topic) {
+
+        var apiUrl = Topic.getTopicDetailsApiUrl(topic.id, hostUrl);
+        var that = this;
+        var result = $.getJSON(apiUrl).then(
+          function(detailedTopic) {
+            // debugger;
+            var namespacedId = hostSlug + "_" + detailedTopic.id;
+
+            var topicProperties = {
+              title: detailedTopic.title,
+              post_stream: detailedTopic.post_stream,
+              originalId: detailedTopic.id,
+              sourceSiteSlug: hostSlug,
+              id: namespacedId
+            };
+
+            Topic.findOrCreate(that.store, 'topic', topicProperties);
+          }
+        );
+
+      }.bind(this));
+
+    },
 
   },
 

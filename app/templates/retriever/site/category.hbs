@@ -1,7 +1,7 @@
 <div class="selectable-topics">
 
   Select topics below
-  <button {{action 'saveTopicsOffline'}}>and click here to save offline</button>
+  <a {{action 'saveTopicsOffline'}}>and click here to save offline</a>
 
   {{multiselect-checkboxes options=model.topic_list.topics labelProperty='title' selection=selectedTopics }} {{!--
   <ul>

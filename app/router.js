@@ -35,12 +35,14 @@ Router.map(function() {
       // });
       this.resource('retriever.site.category', {
         path: '/:category_slug'
-      }, function() {
+      }
+      // , function() {
 
-        this.route('default', {
-          path: '/'
-        });
-      });
+      //   this.route('default', {
+      //     path: '/'
+      //   });
+      // }
+      );
     });
   });
 
