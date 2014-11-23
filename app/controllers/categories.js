@@ -7,6 +7,9 @@ export default Ember.Controller.extend({
   // on first load
 	// currentSourceUrl: "http://klavado.com"
 
+  currentSiteChanged: function(){
+  	debugger;
+  }.observes('domainUrl')
 
 	// offlineTopicsCount: function() {
 	// 	// debugger;

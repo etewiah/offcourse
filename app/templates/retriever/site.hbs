@@ -1,0 +1,21 @@
+<div class="row" style="margin-top:20px">
+  <div class="col-md-3 categories-list">
+    Pick a category:
+
+    <ul>
+
+      {{#each item in model.category_list.categories }}
+      <li>
+        {{#link-to 'retriever.site.category' controller.siteDetails.slug item.slug  }} {{ item.name }} {{/link-to}}
+      </li>
+      {{/each}}
+
+    </ul>
+
+  </div>
+
+  <div class="col-md-9 topics-list">
+    {{outlet}}
+  </div>
+
+</div>
