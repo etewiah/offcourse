@@ -16,6 +16,7 @@
     "ember-pouch": "~0.1.6",
     "font-awesome": "~4.2.0",
     "select2": "~3.5.2",
-    "select2-bootstrap-css": "~1.4.1"
+    "select2-bootstrap-css": "~1.4.1",
+    "ember-cli-moment-shim": "~0.0.2"
   }
 }

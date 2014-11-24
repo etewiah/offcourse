@@ -1,4 +1,5 @@
 import DS from 'ember-data';
+// import PouchPost from './pouch_post';
 
 var PouchTopic = DS.Model.extend({
   // primaryKey: 'id',
@@ -10,7 +11,7 @@ var PouchTopic = DS.Model.extend({
   rev: DS.attr('string'),
   posts: function(){
     return this.get('post_stream.posts').map(function(post){
-      return Em.Object.create(post);
+      return PouchPost.create(post);
     })
     // debugger;
   }.property('post_stream.posts')

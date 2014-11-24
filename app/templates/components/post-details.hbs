@@ -1,5 +1,3 @@
-post detail...
-
 
 <article style="margin: 10px;"
 {{bind-attr class=":boxed via_email" id="postElementId" data-post-id="id" data-user-id="user_id"}}>
@@ -14,9 +12,10 @@ post detail...
     <div class='topic-body'>
       <div class='topic-meta-data'>
         {{poster-name postObject=post}}
-        <div class='post-info'>
+        <div class='post-info pull-right'>
+          {{moment post.created_at }}
+            ( {{ago post.created_at }} )
           <a class='post-date' {{bind-attr href="shareUrl" data-share-url="shareUrl" data-post-number="post_number"}}>
-             {{ post.created_at }}
            </a>
         </div>
 
