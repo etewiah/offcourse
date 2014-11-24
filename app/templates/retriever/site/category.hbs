@@ -3,7 +3,9 @@
   Select topics below
   <a {{action 'saveTopicsOffline'}}>and click here to save offline</a>
 
-  {{multiselect-checkboxes options=model.topic_list.topics labelProperty='title' selection=selectedTopics }} {{!--
+  {{summary-topic-list options=model.topic_list.topics labelProperty='title' selection=selectedTopics }} 
+
+  {{!-- 
   <ul>
     {{#each item in model.topic_list.topics }}
     <li>
