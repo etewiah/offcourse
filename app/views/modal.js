@@ -2,18 +2,51 @@ import Ember from 'ember';
 var ModalView;
 
 ModalView = Ember.View.extend({
-  // tagName: 'div',
-  // classNames: 'modal'.w(),
-  // didInsertElement: function() {
-  //   debugger;
-  //   this.$().attr('id', 'modal');
-  //   this.$().modal({
-  //     keyboard: false,
-  //     backdrop: 'static'
+  tagName: 'div',
+  classNames: ['modal'],
+  didInsertElement: function() {
+    // debugger;
+    var $modal = this.$();
+    // $modal.attr('id', 'modal');
+    $modal.modal({
+      keyboard: false,
+      backdrop: true
+    });
+    $modal.modal('show');
+    var self = this;
+    $modal.one("hide.bs.modal", function () {
+      self.get("controller").send("closeModal");
+    });
+  },
+
+
+  //   _setupModal: function() {
+  //   var self = this,
+  //       $discourseModal = $('#discourse-modal');
+
+  //   $discourseModal.modal('show');
+  //   $discourseModal.one("hide", function () {
+  //     self.get("controller").send("closeModal");
   //   });
-  //   return this.$().modal('show');
-  // },
+
+  //   $('#modal-alert').hide();
+
+  //   // Focus on first element
+  //   if (!Discourse.Mobile.mobileView && self.get('focusInput')) {
+  //     Em.run.schedule('afterRender', function() {
+  //       self.$('input:first').focus();
+  //     });
+  //   }
+
+  //   var title = this.get('title');
+  //   if (title) {
+  //     this.set('controller.controllers.modal.title', title);
+  //   }
+  // }.on('didInsertElement'),
+
+
   // willDestroyElement: function() {
+  //   debugger;
   //   return this.$().modal('hide');
   // }
 });

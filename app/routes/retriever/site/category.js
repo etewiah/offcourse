@@ -15,16 +15,15 @@ export default Ember.Route.extend({
   // ],
   actions: {
     saveTopicsOffline: function() {
-      // this.send( 'openModal', 'modal/topic');
+      this.send( 'openModal', 'modal/topic');
 
       //@property {string} The name of the modal, required later to close the modal (see submitManual function above)
       //@property {string} The title of the modal.
       //@property {string} The template name to render within the modal body, a View class may also be specified.
       //@property {array} Array of Button meta data
       //@property {object} The controller instance that instantiate the modal.
-      debugger;
-      Bootstrap.ModalManager.open('manualModal', 'Hello', TopicModalView, [], this.controller);
-      debugger;
+      // debugger;
+      // Bootstrap.ModalManager.open('manualModal', 'Hello', TopicModalView, [], this.controller);
       return;
       // var categoriesController = this.controllerFor('categories');
       // var hostUrl = categoriesController.get('currentSourceUrl');

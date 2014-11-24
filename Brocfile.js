@@ -26,6 +26,9 @@ var app = new EmberApp({
 app.import('bower_components/pouchdb/dist/pouchdb.js');
 app.import('bower_components/relational-pouch/dist/pouchdb.relational-pouch.js');
 app.import('bower_components/ember-pouch/dist/globals/main.js');
+
+
+app.import('bower_components/bootstrap/js/modal.js');
 // Use `app.import` to add additional libraries to the generated
 // output files.
 //

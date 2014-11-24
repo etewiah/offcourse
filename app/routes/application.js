@@ -5,7 +5,6 @@ var ApplicationRoute;
 ApplicationRoute = Ember.Route.extend({
   actions: {
     openModal: function(modal) {
-    	debugger;
       return this.render(modal, {
         into: 'application',
         outlet: 'modal'
