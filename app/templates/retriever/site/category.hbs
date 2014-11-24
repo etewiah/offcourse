@@ -3,7 +3,8 @@
   Select topics below
   <a {{action 'saveTopicsOffline'}}>and click here to save offline</a>
 
-  {{summary-topic-list options=model.topic_list.topics labelProperty='title' selection=selectedTopics }} 
+  {{summary-topic-list options=model.topic_list.topics labelProperty='title'
+  siteDetails=controller.siteDetails selection=selectedTopics }} 
 
   {{!-- 
   <ul>

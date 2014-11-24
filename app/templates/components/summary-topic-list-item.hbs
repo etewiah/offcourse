@@ -2,3 +2,23 @@
   {{input type="checkbox" checked=isSelected}}
   {{ value.fancy_title }}  
 </label>
+<a href="#" {{ action 'previewTopic'}} class="pull-right" >preview</a>
+
+{{!--     {{bs-button title="Show Modal" clicked="show"}}
+ --}}    
+ {{#bs-modal name="myModal" fade=true footerButtonsBinding="myModalButtons" title="My Modal 2"}}
+        <p>Modal content!</p>
+
+     <ul class="list-group">
+
+      {{#each item in posts }}
+      <li class="list-group-item">
+post...
+        {{post-details post=item }}
+
+      </li>
+      {{/each}}
+
+    </ul>
+
+    {{/bs-modal}}
