@@ -1,9 +1,31 @@
 import Ember from 'ember';
 import Topic from '../../../models/topic';
+import TopicModalView from '../../../views/modal/topic';
 
 export default Ember.Route.extend({
-   actions: {
+  // manualButtons: [
+  //   Ember.Object.create({
+  //     title: 'Submit',
+  //     clicked: "submitManual"
+  //   })
+  //   Ember.Object.create({
+  //     title: 'Cancel',
+  //     dismiss: 'modal'
+  //   })
+  // ],
+  actions: {
     saveTopicsOffline: function() {
+      // this.send( 'openModal', 'modal/topic');
+
+      //@property {string} The name of the modal, required later to close the modal (see submitManual function above)
+      //@property {string} The title of the modal.
+      //@property {string} The template name to render within the modal body, a View class may also be specified.
+      //@property {array} Array of Button meta data
+      //@property {object} The controller instance that instantiate the modal.
+      debugger;
+      Bootstrap.ModalManager.open('manualModal', 'Hello', TopicModalView, [], this.controller);
+      debugger;
+      return;
       // var categoriesController = this.controllerFor('categories');
       // var hostUrl = categoriesController.get('currentSourceUrl');
       // var hostSlug = categoriesController.get('currentSourceId') || "klavado";
@@ -50,7 +72,7 @@ export default Ember.Route.extend({
     // var siteModel = this.modelFor('retriever.site');
     var siteSlug = this.paramsFor('retriever.site').slug;
     var apiUrl = "/remote_discourse/topics_per_category.json?slug=" + siteSlug + "&category=" + params.category_slug;
-     // Category.getIndexApiUrl(discourseUrl);
+    // Category.getIndexApiUrl(discourseUrl);
     var topics = $.getJSON(apiUrl).then(
       function(response) {
         return response;
@@ -62,6 +84,6 @@ export default Ember.Route.extend({
   setupController: function(controller, model) {
     controller.set('model', model);
     controller.set('selectedTopics', []);
-    controller.set('siteDetails',this.modelFor('retriever.site').siteDetails);
+    controller.set('siteDetails', this.modelFor('retriever.site').siteDetails);
   }
 });

@@ -1,0 +1,15 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button class="close" type="button" {{action cancel on="click"}}>x</button>
+      <h4 class="modal-title">Confirm</h4>
+    </div>
+    <div class="modal-body">
+      Are you sure about this?!?!
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-default" {{action cancel on="click"}}>Nope</a>
+      <button class="btn btn-danger" {{action confirm on="click"}}>Yes, do it!</a>
+    </div>
+  </div>
+</div>
