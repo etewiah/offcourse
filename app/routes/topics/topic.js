@@ -12,7 +12,7 @@ export default Ember.Route.extend({
   },
 
   model: function(params) {
-    var topic = this.store.find('topic', params.id);
+    var topic = this.store.find('pouch_topic', params.id);
 
     // var url = "/t/" + params.id + ".json";
     // var topic = $.getJSON(url).then(

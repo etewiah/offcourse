@@ -14,7 +14,7 @@ export default Ember.Route.extend({
       // this.get('store').findAll('topic').invoke('destroyRecord');
       // above does not work
       var that = this;
-      this.get('store').findAll('topic').then(function(record) {
+      this.get('store').findAll('pouch_topic').then(function(record) {
         record.content.forEach(function(rec) {
           Ember.run.once(this, function() {
             rec.deleteRecord();
@@ -30,7 +30,7 @@ export default Ember.Route.extend({
   },
 
   model: function(params) {
-    var topics = this.store.find('topic');
+    var topics = this.store.find('pouch_topic');
     // topics.then(function(res) {
     // });
     return topics;

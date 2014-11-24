@@ -34,7 +34,7 @@ export default Ember.Route.extend({
               id: namespacedId
             };
 
-            Topic.findOrCreate(that.store, 'topic', topicProperties);
+            Topic.findOrCreate(that.store, 'pouch_topic', topicProperties);
           }
         );
 
