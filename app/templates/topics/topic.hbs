@@ -15,6 +15,9 @@
 
       {{#each item in model.post_stream.posts }}
       <li class="list-group-item">
+
+        {{post-details post=item }}
+
         {{{ item.cooked }}}
       </li>
       {{/each}}
