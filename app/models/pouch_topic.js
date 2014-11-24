@@ -7,7 +7,13 @@ var PouchTopic = DS.Model.extend({
   sourceSiteId: DS.attr('string'),
   title: DS.attr('string'),
   post_stream: DS.attr('raw'),
-  rev: DS.attr('string')
+  rev: DS.attr('string'),
+  posts: function(){
+    return this.get('post_stream.posts').map(function(post){
+      return Em.Object.create(post);
+    })
+    // debugger;
+  }.property('post_stream.posts')
 });
 
 PouchTopic.reopenClass({

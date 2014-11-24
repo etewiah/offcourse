@@ -13,11 +13,11 @@ post detail...
 
     <div class='topic-body'>
       <div class='topic-meta-data'>
-        {{poster-name post=post}}
+        {{poster-name postObject=post}}
         <div class='post-info'>
           <a class='post-date' {{bind-attr href="shareUrl" data-share-url="shareUrl" data-post-number="post_number"}}>
-{{!--           {{age-with-tooltip created_at}}
- --}}          </a>
+             {{ post.created_at }}
+           </a>
         </div>
 
         <div {{bind-attr class=":read-state read"}} title="{{ post.unread}}">{{ circle-icon }}</div>

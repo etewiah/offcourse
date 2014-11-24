@@ -13,12 +13,11 @@
  --}}
     <ul class="list-group">
 
-      {{#each item in model.post_stream.posts }}
+      {{#each item in model.posts }}
       <li class="list-group-item">
 
         {{post-details post=item }}
 
-        {{{ item.cooked }}}
       </li>
       {{/each}}
 

@@ -31,8 +31,6 @@ export default Ember.Route.extend({
 
   model: function(params) {
     var topics = this.store.find('pouch_topic');
-    // topics.then(function(res) {
-    // });
     return topics;
   },
   setupController: function(controller, model) {

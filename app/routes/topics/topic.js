@@ -24,8 +24,8 @@ export default Ember.Route.extend({
   },
   setupController: function(controller, model) {
     // debugger;
-    controller.set('model', model.get('data'));
-    // controller.set('model',model);
+    // controller.set('model', model.get('data'));
+    controller.set('model',model);
   }
 
 });

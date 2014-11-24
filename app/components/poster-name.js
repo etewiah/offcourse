@@ -9,8 +9,8 @@ var PosterNameComponent = Em.Component.extend({
   },
 
   render: function(buffer) {
-    // var post = this.get('post');
-    var post = new Em.Object(post);
+    var post = this.get('postObject');
+    // var post = Em.Object.create(postObject);
 
     if (post) {
       var name = post.get('name'),
@@ -72,7 +72,8 @@ var PosterNameComponent = Em.Component.extend({
     var desc;
 
     if(post.get('moderator')) {
-      desc = I18n.t('user.moderator_tooltip');
+      // desc = I18n.t('user.moderator_tooltip');
+      desc = "Moderate post";
       return '<i class="fa fa-shield" title="' + desc +  '" alt="' + desc + '"></i>';
     }
   }
