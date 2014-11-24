@@ -12,14 +12,18 @@
 <div class="row offline-topics">
   <div class="col-md-3">
     <div class="bs-sidebar hidden-print affix-top" role="complementary">
-      <ul class="nav bs-sidenav">
-        <ul>
-
+        <ul class="nav nav-pills nav-stacked">
           {{#each topic in model.content }}
-          <li>
+
+            {{#link-to 'topics.topic' topic.id tagName="li" 
+              class="category-nav-item" }}
+                <a {{bind-attr href="view.href"}}>{{ topic.title }}</a>
+            {{/link-to}}
+
+{{!--           <li>
             {{#link-to 'topics.topic' topic.id }} {{ topic.title }} {{/link-to}}
           </li>
-          {{/each}}
+ --}}          {{/each}}
 
         </ul>
 

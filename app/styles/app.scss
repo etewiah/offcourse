@@ -4,12 +4,28 @@ html, body {
   margin: 20px;
 }
 
+.category-nav-item, .topic-nav-item {
+	margin-bottom: 2px;
+}
+
+.category-nav-item a:hover, .topic-nav-item a:hover{
+	background-color: #cccccc !important;
+}
+.category-nav-item a, .topic-nav-item a{
+	padding: 5px 10px !important;
+	background-color: #eeeeee;
+	cursor: pointer;
+}
+
 .inline-input {
 	width: 40%;
   display: inline-block;
 }
 
 .navbar-default {
+background-color: #348CB2;
+}
+.topic-details .panel-heading {
 background-color: #348CB2;
 }
 

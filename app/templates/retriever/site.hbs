@@ -1,20 +1,25 @@
 <div class="row" style="margin-top:20px">
-  <div class="col-md-3 categories-list">
+  <div class="col-md-1 categories-list">
     Pick a category:
 
-    <ul>
-
+    <ul class="nav nav-pills nav-stacked">
       {{#each item in model.category_list.categories }}
-      <li>
+
+      {{#link-to 'retriever.site.category' controller.siteDetails.slug item.slug tagName="li" 
+        class="category-nav-item" }}
+          <a {{bind-attr href="view.href"}}>{{ item.name }}</a>
+      {{/link-to}}
+
+{{!--       <li class="category-nav-item">
         {{#link-to 'retriever.site.category' controller.siteDetails.slug item.slug  }} {{ item.name }} {{/link-to}}
-      </li>
+      </li> --}}
       {{/each}}
 
     </ul>
 
   </div>
 
-  <div class="col-md-9 topics-list">
+  <div class="col-md-11 topics-list">
     {{outlet}}
   </div>
 
