@@ -2,7 +2,7 @@
   <div class="col-md-1 categories-list">
     Categories:
     <ul class="nav nav-pills nav-stacked">
-      {{#each item in model.category_list.categories }}
+      {{#each item in model.categories }}
 
       {{#link-to 'retriever.site.category' controller.siteDetails.slug item.slug tagName="li" 
         class="category-nav-item" }}

@@ -3,16 +3,6 @@ import Topic from '../../../models/topic';
 import TopicModalView from '../../../views/modal/topic';
 
 export default Ember.Route.extend({
-  // manualButtons: [
-  //   Ember.Object.create({
-  //     title: 'Submit',
-  //     clicked: "submitManual"
-  //   })
-  //   Ember.Object.create({
-  //     title: 'Cancel',
-  //     dismiss: 'modal'
-  //   })
-  // ],
   actions: {
     previewTopic: function(topic) {
       var hostUrl = this.controller.get('siteDetails.base_url');
@@ -26,14 +16,6 @@ export default Ember.Route.extend({
           // that.set('posts', detailedTopic.post_stream.posts);
           that.controllerFor('modal/topic').set('model', detailedTopic );
           that.send('openModal', 'modal/topic');
-
-          // var topicProperties = {
-          //   title: detailedTopic.title,
-          //   post_stream: detailedTopic.post_stream,
-          //   originalId: detailedTopic.id,
-          // };
-
-          // Topic.findOrCreate(that.store, 'pouch_topic', topicProperties);
         }
       );
 

@@ -23,7 +23,6 @@ export default Ember.Route.extend({
     return topic;
   },
   setupController: function(controller, model) {
-    // debugger;
     // controller.set('model', model.get('data'));
     controller.set('model',model);
   }
