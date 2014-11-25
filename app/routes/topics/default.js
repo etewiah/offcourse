@@ -7,10 +7,13 @@ export default Ember.Route.extend({
   },
 
   beforeModel: function(params) {
-    var sitesModel = this.modelFor('retriever');
-    var siteModel = sitesModel[0];
-    if (siteModel) {
-    	this.transitionTo('retriever.site', siteModel.slug);
+    var topics = this.modelFor('topics').content;
+    // redirect to the first topic
+    var topic = topics[0];
+    if (topic) {
+    	this.transitionTo('topics.topic', topic.id);
     };
   }
 });
+
+

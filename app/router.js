@@ -33,14 +33,14 @@ Router.map(function() {
         path: '/'
       });
       this.resource('retriever.site.category', {
-        path: '/:category_slug'
-      }
-      // , function() {
+          path: '/:category_slug'
+        }
+        // , function() {
 
-      //   this.route('default', {
-      //     path: '/'
-      //   });
-      // }
+        //   this.route('default', {
+        //     path: '/'
+        //   });
+        // }
       );
     });
   });
@@ -73,6 +73,10 @@ Router.map(function() {
   this.resource('topics', {
     path: '/offline/topics'
   }, function() {
+    this.route('default', {
+      path: '/'
+    });
+
     this.resource('topics.topic', {
       path: '/:id'
     }, function() {

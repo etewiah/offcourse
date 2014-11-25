@@ -11,6 +11,9 @@ export default Ember.Controller.extend({
 // should only redirect when changed from dropdown
     	this.set('currentSiteInitialised', true);
     };
-  }.observes('currentSite')
+  }.observes('currentSite'),
+  faviconUrl: function(){
+  	return this.get('currentSite.base_url') + '/favicon.ico'
+  }.property('currentSite')
 
 });
