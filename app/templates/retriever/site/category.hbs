@@ -1,20 +1,16 @@
 <div class="selectable-topics">
 
-  Select topics below
-  <a {{action 'saveTopicsOffline'}}>and click here to save offline</a>
+<div class="row">
+  <h3>Select topics below
+    <small><a {{action 'saveTopicsOffline'}}>and click here to save offline</a></small>
+    {{#link-to 'topics' class="btn btn-primary btn-sm pull-right"  }} View your offline topics {{/link-to}}
 
-  {{summary-topic-list options=model.topic_list.topics labelProperty='title'
+  </h3>
+</div>
+
+<div class="row">
+    {{summary-topic-list options=model.topic_list.topics labelProperty='title'
   siteDetails=controller.siteDetails selection=selectedTopics previewTopicAction="previewTopic" }} 
-
-  {{!-- 
-  <ul>
-    {{#each item in model.topic_list.topics }}
-    <li>
-      {{#link-to 'categories.category.topic' item.id }} {{ item.title }} {{/link-to}}
-
-    </li>
-    {{/each}}
-
-  </ul>--}}
+</div>
 
 </div>

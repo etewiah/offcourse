@@ -23,7 +23,8 @@ export default Ember.Route.extend({
             base_url: response.base_url
           });
           site.save();
-          // this.controller.model.pushObject(response);
+          debugger;
+          this.controller.model.pushObject(response);
           this.controller.set('currentSite',response);
         }.bind(this)
       );

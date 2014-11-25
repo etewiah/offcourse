@@ -1,31 +1,33 @@
-<div>
-  <h3>Select topics to view offline.
-  <small>{{#link-to 'topics' }} Click here to view topics saved offline. {{/link-to}}</small></h3>
-</div>
 <div class="row">
   <div class="col-md-2">
-  <div>
-            <label class="control-label" style="margin-top: 5%;" >Displaying info from:</label>
-            <img  {{bind-attr src=controller.faviconUrl }} > {{ currentSite.base_url }}
-  </div>
-  </div>
-      <div class="col-md-4">
-          {{select-2
-    content=model
-    value=currentSite
-    placeholder="Choose site"
-    allow-clear=true
-}}
-
+    <div>
+      <label class="control-label" style="margin-top: 5%;">Displaying info from:</label>
     </div>
+  </div>
+  <div class="col-md-4">
+    {{select-2 content=model value=currentSite placeholder="Choose site" allow-clear=true }}
+  </div>
 
   <div class="col-md-6">
-    <form {{action "addSite" on="submit"}}>
+    <img style="max-height: 20px;" {{bind-attr src=currentSite.logo_url }}>
+    <a target="_blank"  {{bind-attr href=currentSite.base_url }} >{{ currentSite.display_name }}</a>
+    <p>{{ currentSite.description }}</p>
+  </div>
+
+</div>
+<div class="row" style="margin-top:10px">
+  <div class="col-md-2">
+    <div>
+      <label class="control-label" style="margin-top: 5%;">Add a discourse site url:</label>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <form {{action "addSite" on="submit" }}>
       <div class="form-group">
-        <label class="control-label" for='name'>Add a discourse site url:</label>
-        {{input placeholder="eg: https://meta.discourse.org" value=newSiteUrl id="domain-url"
-           autofocus="autofocus" class="form-control inline-input"}}
-      <button class="btn btn-primary" type="submit">Save</button>
+        <label class="control-label" for='name'></label>
+        {{input placeholder="eg: https://meta.discourse.org" value=newSiteUrl id="domain-url" autofocus="autofocus" class="form-control inline-input"}}
+        <button class="btn btn-primary btn-sm" type="submit">Add</button>
 
       </div>
     </form>
@@ -33,5 +35,4 @@
   </div>
 
 </div>
-
 {{ outlet }}
