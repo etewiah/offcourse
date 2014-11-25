@@ -33,16 +33,16 @@ Router.map(function() {
         path: '/'
       });
       this.resource('retriever.site.category', {
-          path: '/:category_slug'
+          path: '/:category_slug/page/:page_number'
         }
-        , function() {
-          this.route('default', {
-            path: '/'
-          });
-          this.route('page', {
-            path: '/page/:page_number'
-          });
-        }
+        // , function() {
+        //   this.route('default', {
+        //     path: '/'
+        //   });
+        //   this.route('page', {
+        //     path: '/page/:page_number'
+        //   });
+        // }
       );
     });
   });

@@ -7,11 +7,11 @@ export default Ember.Route.extend({
   },
 
   beforeModel: function(params) {
-    var categories = this.modelFor('retriever.site').category_list.categories;
+    var categories = this.modelFor('retriever.site').categories;
     // redirect to the first category
     var category = categories[0];
     if (category) {
-      this.transitionTo('retriever.site.category', category.slug);
+      this.transitionTo('retriever.site.category', category.slug, "1");
     };
   }
 });

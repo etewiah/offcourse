@@ -4,7 +4,7 @@
     <ul class="nav nav-pills nav-stacked">
       {{#each item in model.categories }}
 
-      {{#link-to 'retriever.site.category' controller.siteDetails.slug item.slug tagName="li" 
+      {{#link-to 'retriever.site.category' controller.siteDetails.slug item.slug '1' tagName="li" 
         class="category-nav-item" }}
         <a {{bind-attr href="view.href"}}>{{ item.name }}   
 {{!--           <div class="pull-right"><span class="badge"> {{ item.topic_count }} <i class="fa fa-comment-o"></i></span></div>

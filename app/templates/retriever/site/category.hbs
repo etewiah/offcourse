@@ -1,16 +1,45 @@
 <div class="selectable-topics">
 
-<div class="row">
-  <h3>Select topics below
-    <small><a {{action 'saveTopicsOffline'}}>and click here to save offline</a></small>
-    {{#link-to 'topics' class="btn btn-primary btn-sm pull-right"  }} View your offline topics {{/link-to}}
+  <div class="row">
+    <h3 style="margin-top:0px">Select topics below
+      <small><a {{action 'saveTopicsOffline'}}>and click here to save offline</a>
+      </small>
+      {{#link-to 'topics' class="btn btn-primary btn-sm pull-right" }} View your offline topics {{/link-to}}
 
-  </h3>
-</div>
+    </h3>
+  </div>
 
-<div class="row">
-    {{summary-topic-list options=model.topic_list.topics labelProperty='title'
-  siteDetails=controller.siteDetails selection=selectedTopics previewTopicAction="previewTopic" }} 
-</div>
+  <div class="row">
+    {{summary-topic-list options=model.topic_list.topics labelProperty='title' siteDetails=controller.siteDetails selection=selectedTopics previewTopicAction="previewTopic" }}
+  </div>
+
+
+<nav>
+  <ul class="pagination pull-right">
+    {{#if controller.previousPageNumber }}
+      {{#link-to 'retriever.site.category' controller.siteDetails.slug model.category 
+      controller.previousPageNumber tagName="li" 
+        class="category-nav-item" }}
+        <a {{bind-attr href="view.href"}}>previous </a>
+      {{/link-to}}
+  {{/if}}
+{{!--     <li><a href="#"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li><a href="#"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>
+ --}}
+  {{#if controller.nextPageNumber }}
+      {{#link-to 'retriever.site.category' controller.siteDetails.slug model.category 
+      controller.nextPageNumber tagName="li" 
+        class="category-nav-item" }}
+        <a {{bind-attr href="view.href"}}>next </a>
+      {{/link-to}}
+  {{/if}}
+
+  </ul>
+</nav>
 
 </div>

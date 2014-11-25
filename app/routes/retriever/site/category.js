@@ -14,7 +14,7 @@ export default Ember.Route.extend({
       var result = $.getJSON(apiUrl).then(
         function(detailedTopic) {
           // that.set('posts', detailedTopic.post_stream.posts);
-          that.controllerFor('modal/topic').set('model', detailedTopic );
+          that.controllerFor('modal/topic').set('model', detailedTopic);
           that.send('openModal', 'modal/topic');
         }
       );
@@ -62,11 +62,13 @@ export default Ember.Route.extend({
   },
 
   model: function(params) {
-    // var discourseUrl = this.controllerFor('retriever').get('model');
-    // controller model above will not be ready here
+    var pageNumber = params.page_number || "1";
+    this.set('pageNumber',pageNumber);
     // var siteModel = this.modelFor('retriever.site');
     var siteSlug = this.paramsFor('retriever.site').slug;
-    var apiUrl = "/remote_discourse/topics_per_category.json?slug=" + siteSlug + "&category=" + params.category_slug;
+    var apiUrl = "/remote_discourse/topics_per_category.json?slug=" + siteSlug +
+      "&category=" + params.category_slug +
+      "&page_number=" + pageNumber;
     // Category.getIndexApiUrl(discourseUrl);
     var topics = $.getJSON(apiUrl).then(
       function(response) {
@@ -80,5 +82,14 @@ export default Ember.Route.extend({
     controller.set('model', model);
     controller.set('selectedTopics', []);
     controller.set('siteDetails', this.modelFor('retriever.site').siteDetails);
+    var hasMorePages = model.topic_list.more_topics_url ? true : false;
+    var pageNumber = this.get('pageNumber');
+    // controller.set('hasMorePages', hasMorePages);
+    if (parseInt(pageNumber) > 1) {
+      controller.set('previousPageNumber', (parseInt(pageNumber) - 1 ) )
+    };
+    if (hasMorePages && pageNumber) {
+      controller.set('nextPageNumber', (parseInt(pageNumber) +1 ) )
+    };
   }
 });
