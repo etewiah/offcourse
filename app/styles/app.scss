@@ -4,6 +4,11 @@ html, body {
   margin: 20px;
 }
 
+
+.topic-list-label {
+	cursor: pointer;
+}
+
 /* needed to ensure modal is not behind backdrop*/
 .modal-dialog{
 	z-index: 1041;

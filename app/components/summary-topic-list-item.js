@@ -13,28 +13,33 @@ export default Ember.Component.extend({
   labelProperty: null,
 
 
-  // click: function(){
-  // 	debugger;
-  // },
+  click: function(){
+  	debugger;
+  },
 
   isSelected: function() {
     return this.get('selection').contains(this.get('value'));
   }.property('value', 'selection'),
 
-  label: function() {
-    var labelProperty = this.get('labelProperty');
-    var value = this.get('value');
+  url: function(){
+    var url = this.get('parentView.siteDetails.base_url') + "/t/" + this.get('value.id');
+    return url;
+  }.property('value'),
+  // label: function() {
+  //   debugger;
+  //   var labelProperty = this.get('labelProperty');
+  //   var value = this.get('value');
 
-    if (labelProperty) {
-      if (typeof value.get === 'function') {
-        return value.get(labelProperty);
-      } else {
-        return value[labelProperty];
-      }
-    } else {
-      return String(value);
-    }
-  }.property('value', 'labelProperty'),
+  //   if (labelProperty) {
+  //     if (typeof value.get === 'function') {
+  //       return value.get(labelProperty);
+  //     } else {
+  //       return value[labelProperty];
+  //     }
+  //   } else {
+  //     return String(value);
+  //   }
+  // }.property('value', 'labelProperty'),
 
   isSelectedChanged: function() {
     if (this.get('isSelected') && !this.get('selection').contains(this.get('value'))) {

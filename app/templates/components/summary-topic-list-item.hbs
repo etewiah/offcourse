@@ -1,7 +1,20 @@
-<label>
+<label class="topic-list-label">
   {{input type="checkbox" checked=isSelected}} {{ value.fancy_title }}
 </label>
-<a href="#" {{ action 'previewTopic' value target="view.parentView" }} class="pull-right">preview</a>
+
+<div>
+
+	<a target="_blank" {{bind-attr href=url }} >original</a> | <a href="#" {{ action 'previewTopic' value target="view.parentView" }} >preview</a>
+	
+<div class="pull-right">
+
+		<span class="badge">{{ value.like_count }} <i class="fa fa-heart"></i></span>
+	<span class="badge">{{ value.views }}  <i class="fa fa-eye"></i></span>
+	<span class="badge">{{ value.posts_count }} <i class="fa fa-comments"></i></span>
+	<span class="badge">latest: {{ago value.last_posted_at }}</span>
+</div>
+
+</div>
 {{!-- {{bs-button title="Show Modal" clicked="show"}} --}} 
 
 
