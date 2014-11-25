@@ -13,9 +13,9 @@ export default Ember.Component.extend({
   labelProperty: null,
 
 
-  click: function(){
-  	debugger;
-  },
+  // click: function(){
+  // 	// debugger;
+  // },
 
   isSelected: function() {
     return this.get('selection').contains(this.get('value'));

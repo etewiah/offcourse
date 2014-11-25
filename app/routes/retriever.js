@@ -23,9 +23,10 @@ export default Ember.Route.extend({
             base_url: response.base_url
           });
           site.save();
-          debugger;
+          response.text = response.base_url;
+          // have to do above as select2 dropdown requires text field
           this.controller.model.pushObject(response);
-          this.controller.set('currentSite',response);
+          this.controller.set('currentSite', response);
         }.bind(this)
       );
 
@@ -37,8 +38,9 @@ export default Ember.Route.extend({
     var sites = $.getJSON(apiUrl).then(
       function(response) {
         var sitesArray = [];
-        response.forEach(function(site){
+        response.forEach(function(site) {
           site.text = site.base_url;
+          // have to do above as select2 dropdown requires text field
           sitesArray.push(site);
         });
         return sitesArray;
