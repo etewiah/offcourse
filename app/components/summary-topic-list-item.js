@@ -12,31 +12,6 @@ export default Ember.Component.extend({
 
   labelProperty: null,
 
-  actions: {
-    previewTopic: function() {
-      var hostUrl = this.get('parentView.siteDetails.base_url');
-      // this.modelFor('retriever.site').siteDetails.base_url;
-
-      var apiUrl = Topic.getTopicDetailsApiUrl(this.get('value.id'), hostUrl);
-      var that = this;
-      var result = $.getJSON(apiUrl).then(
-        function(detailedTopic) {
-					that.set('posts', detailedTopic.post_stream.posts)
-          debugger;
-
-          // var topicProperties = {
-          //   title: detailedTopic.title,
-          //   post_stream: detailedTopic.post_stream,
-          //   originalId: detailedTopic.id,
-          // };
-
-          // Topic.findOrCreate(that.store, 'pouch_topic', topicProperties);
-        }
-      );
-
-      return Bootstrap.ModalManager.show('myModal');
-    }
-  },
 
   // click: function(){
   // 	debugger;

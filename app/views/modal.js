@@ -4,12 +4,14 @@ var ModalView;
 ModalView = Ember.View.extend({
   tagName: 'div',
   classNames: ['modal'],
+  attributeBindings: ['tabindex'],
+  tabindex: "-1",
   didInsertElement: function() {
     // debugger;
     var $modal = this.$();
     // $modal.attr('id', 'modal');
     $modal.modal({
-      keyboard: false,
+      keyboard: true,
       backdrop: true
     });
     $modal.modal('show');

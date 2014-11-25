@@ -14,18 +14,32 @@ export default Ember.Route.extend({
   //   })
   // ],
   actions: {
-    saveTopicsOffline: function() {
-      this.send( 'openModal', 'modal/topic');
+    previewTopic: function(topic) {
+      var hostUrl = this.controller.get('siteDetails.base_url');
+      // this.get('parentView.siteDetails.base_url');
+      // this.modelFor('retriever.site').siteDetails.base_url;
 
-      //@property {string} The name of the modal, required later to close the modal (see submitManual function above)
-      //@property {string} The title of the modal.
-      //@property {string} The template name to render within the modal body, a View class may also be specified.
-      //@property {array} Array of Button meta data
-      //@property {object} The controller instance that instantiate the modal.
-      // debugger;
-      // Bootstrap.ModalManager.open('manualModal', 'Hello', TopicModalView, [], this.controller);
-      return;
-      // var categoriesController = this.controllerFor('categories');
+      var apiUrl = Topic.getTopicDetailsApiUrl(topic.id, hostUrl);
+      var that = this;
+      var result = $.getJSON(apiUrl).then(
+        function(detailedTopic) {
+          // that.set('posts', detailedTopic.post_stream.posts);
+          that.controllerFor('modal/topic').set('model', detailedTopic );
+          that.send('openModal', 'modal/topic');
+
+          // var topicProperties = {
+          //   title: detailedTopic.title,
+          //   post_stream: detailedTopic.post_stream,
+          //   originalId: detailedTopic.id,
+          // };
+
+          // Topic.findOrCreate(that.store, 'pouch_topic', topicProperties);
+        }
+      );
+
+    },
+    saveTopicsOffline: function() {
+
       // var hostUrl = categoriesController.get('currentSourceUrl');
       // var hostSlug = categoriesController.get('currentSourceId') || "klavado";
       var selectedTopics = this.controller.get('selectedTopics');

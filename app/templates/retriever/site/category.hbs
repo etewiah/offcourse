@@ -4,7 +4,7 @@
   <a {{action 'saveTopicsOffline'}}>and click here to save offline</a>
 
   {{summary-topic-list options=model.topic_list.topics labelProperty='title'
-  siteDetails=controller.siteDetails selection=selectedTopics }} 
+  siteDetails=controller.siteDetails selection=selectedTopics previewTopicAction="previewTopic" }} 
 
   {{!-- 
   <ul>

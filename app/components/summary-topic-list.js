@@ -9,5 +9,11 @@ export default Ember.Component.extend({
 
   selection: null,
 
-  labelProperty: null
+  labelProperty: null,
+
+  actions: {
+    previewTopic: function(topic) {
+      this.sendAction('previewTopicAction', topic)
+    }
+  },
 });

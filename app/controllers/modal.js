@@ -4,7 +4,6 @@ var ModalController;
 ModalController = Ember.ObjectController.extend({
   actions: {
     cancel: function() {
-    	debugger;
       if (this.content) {
         this.content.rollback();
       }

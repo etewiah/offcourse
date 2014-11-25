@@ -1,15 +1,23 @@
-<div class="modal-dialog">
+<div class="modal-dialog modal-lg">
   <div class="modal-content">
     <div class="modal-header">
       <button class="close" type="button" {{action cancel on="click"}}>x</button>
-      <h4 class="modal-title">Confirm</h4>
+      <h4 class="modal-title">Topic Preview</h4>
     </div>
     <div class="modal-body">
-      Are you sure about this?!?!
+
+    <h3>{{ model.fancy_title }}</h3>
+      <ul class="list-group">
+        {{#each item in model.post_stream.posts }}
+        <li class="list-group-item">
+          {{post-details post=item }}
+        </li>
+        {{/each}}
+      </ul>
+
     </div>
     <div class="modal-footer">
-      <button class="btn btn-default" {{action cancel on="click"}}>Nope</a>
-      <button class="btn btn-danger" {{action confirm on="click"}}>Yes, do it!</a>
+      <button class="btn btn-primary" {{action cancel on="click"}}>Ok</a>
     </div>
   </div>
 </div>
