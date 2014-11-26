@@ -81,6 +81,7 @@ export default Ember.Route.extend({
   setupController: function(controller, model) {
     controller.set('model', model);
     controller.set('selectedTopics', []);
+        // controller.set('siteDetails', this.modelFor('retriever.site').get('siteDetails'));
     controller.set('siteDetails', this.modelFor('retriever.site').siteDetails);
     var hasMorePages = model.topic_list.more_topics_url ? true : false;
     var pageNumber = this.get('pageNumber');

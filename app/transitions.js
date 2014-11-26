@@ -1,4 +1,12 @@
+import Category from './models/category'
 export default function() {
+  // this.transition(
+	 //  // this.betweenModels({instanceOf: Category}),
+  //  this.hasClass('liquid-topics'),
+	 //  this.use('toLeft')
+  //   // this.withinRoute('retriever.site'),
+  //   // this.use('toRight',  { delay: 80, duration: 800 })
+  // );
   this.transition(
     this.withinRoute('topics.topic.default'),
     this.use('toRight',  { delay: 80, duration: 800 })

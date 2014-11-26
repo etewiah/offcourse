@@ -1,5 +1,5 @@
 import Ember from 'ember';
-// import Category from '../../models/category';
+// import RemoteSite from '../../models/remote_site';
 
 export default Ember.Route.extend({
   actions: {
@@ -14,9 +14,12 @@ export default Ember.Route.extend({
     var apiUrl = "/remote_discourse/categories.json?slug=" + params.slug;
     var result = $.getJSON(apiUrl).then(
       function(response) {
-        // console.log(this.siteDetails);
+        // debugger;
         // can't figure out how to get at siteDetails from here
-        return response;
+        // return RemoteSite.create(response);
+        return Ember.Object.create(response);
+        // return response;
+        // return this.store.createRecord('remote_site',response);
       }.bind(this)
     );
     return result;
