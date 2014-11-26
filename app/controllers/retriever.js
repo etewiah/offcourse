@@ -10,10 +10,10 @@ export default Ember.Controller.extend({
 // using setting below to ensure I don't redirect when currentSite is set from route param
 // should only redirect when changed from dropdown
     	this.set('currentSiteInitialised', true);
-    };
+    }
   }.observes('currentSite'),
   faviconUrl: function(){
-  	return this.get('currentSite.base_url') + '/favicon.ico'
+  	return this.get('currentSite.base_url') + '/favicon.ico';
   }.property('currentSite')
 
 });

@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import Topic from '../../../models/topic';
-import TopicModalView from '../../../views/modal/topic';
+// import TopicModalView from '../../../views/modal/topic';
 
 export default Ember.Route.extend({
   actions: {
@@ -30,7 +30,7 @@ export default Ember.Route.extend({
       } else {
         // TODO - actually ensure topis are saved before showing this
         Bootstrap.GNM.push('SUCCESS!', 'Selected topics added', 'success');
-      };
+      }
 
       var hostUrl = this.modelFor('retriever.site').siteDetails.base_url;
       var hostSlug = this.modelFor('retriever.site').siteDetails.slug;
@@ -86,10 +86,10 @@ export default Ember.Route.extend({
     var pageNumber = this.get('pageNumber');
     // controller.set('hasMorePages', hasMorePages);
     if (parseInt(pageNumber) > 1) {
-      controller.set('previousPageNumber', (parseInt(pageNumber) - 1 ) )
-    };
+      controller.set('previousPageNumber', (parseInt(pageNumber) - 1 ) );
+    }
     if (hasMorePages && pageNumber) {
-      controller.set('nextPageNumber', (parseInt(pageNumber) +1 ) )
-    };
+      controller.set('nextPageNumber', (parseInt(pageNumber) +1 ) );
+    }
   }
 });

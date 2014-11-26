@@ -18,7 +18,7 @@ export default Ember.Controller.extend({
       if (result.status === "ok") {
         appController.set('networkIsOnline', true);
       } else {
-        debugger;
+        // debugger;
       }
     }).fail(function(result) {
       appController.set('networkIsOnline', false);

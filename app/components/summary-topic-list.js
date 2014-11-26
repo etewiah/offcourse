@@ -13,7 +13,7 @@ export default Ember.Component.extend({
 
   actions: {
     previewTopic: function(topic) {
-      this.sendAction('previewTopicAction', topic)
+      this.sendAction('previewTopicAction', topic);
     }
   },
 });

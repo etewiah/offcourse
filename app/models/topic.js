@@ -19,8 +19,8 @@ Topic.reopenClass({
     return url;
   },
   findOrCreate: function(store, type, properties) {
-    return store.find(type, properties.id).then(null, (function(_this) {
-      return function(reason) {
+    return store.find(type, properties.id).then(null, (function() {
+      return function() {
         var record;
         // if (reason.status === 404) {
           record = store.recordForId(type, properties.id);

@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import Topic from '../models/topic';
+// import Topic from '../models/topic';
 
 export default Ember.Component.extend({
   classNames: ['multiselect-checkbox-option', 'list-group-item'],
