@@ -86,6 +86,7 @@ export default Ember.Route.extend({
     var hasMorePages = model.topic_list.more_topics_url ? true : false;
     var pageNumber = this.get('pageNumber');
     // controller.set('hasMorePages', hasMorePages);
+    debugger;
     if (parseInt(pageNumber) > 1) {
       controller.set('previousPageNumber', (parseInt(pageNumber) - 1 ) );
     }
