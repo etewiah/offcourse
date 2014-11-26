@@ -9,5 +9,13 @@ export default Ember.Controller.extend({
 		} else{
 			return true;
 		};
-	}.property('model')
+	}.property('model.content'),
+	offlineTopicsCount: function(){
+		var model = this.get('model');
+		if (model.content && model.content.length > 0) {
+			return model.content.length;
+		} else{
+			return 0;
+		};
+	}.property('model.content.@each')
 });

@@ -10,8 +10,12 @@ export default Ember.Route.extend({
       return false;
     }
   },
-
+  // afterModel: function(){
+  //   debugger;
+  // },
   model: function(params) {
+        debugger;
+
     var topic = this.store.find('pouch_topic', params.id);
 
     // var url = "/t/" + params.id + ".json";
