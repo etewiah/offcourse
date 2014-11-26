@@ -20,15 +20,8 @@
             {{/link-to}}
           {{/each}}
         </ul>
-
     </div>
-  </div>
-  <div class="col-md-9" role="main">
-    {{ liquid-outlet }}
-  </div>
-</div>
 
-<div class="row">
   <div class="well">
     <div>
       <span>You have {{ offlineTopicsCount }} topics viewable offline. {{#link-to 'retriever' }} Go online to add more. {{/link-to}}</span>
@@ -47,5 +40,15 @@
     <span>Application says: Network is offline</span>
     {{/if}} --}}
   </div>
+
+
+  </div>
+  <div class="col-md-9" role="main">
+    {{ outlet }}
+  </div>
+</div>
+
+<div class="row">
+
 </div>
 {{/if}}

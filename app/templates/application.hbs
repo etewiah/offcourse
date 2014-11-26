@@ -31,28 +31,26 @@
 </nav>
 
 <div class="container offcourse-main">
+  {{outlet}}
+</div>
 
-  {{liquid-outlet}}
-
-  <div class="row">
-    <div class="well">
+<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+  <div class="container">
       {{#if controller.navigatorIsOnline }}
         <span>Navigator is online</span>
       {{else}}
         <span>Navigator is offline</span>
       {{/if}}
+      |
       {{#if controller.networkIsOnline }}
         <span>Network is online</span>
       {{else}}
         <span>Network is offline</span>
       {{/if}}
-    </div>
   </div>
-</div>
+</nav>
+
 {{bs-growl-notifications showTime="4000"}}
 
 {{outlet "modal"}}
 
-   {{#bs-modal name="myModal" fade=true footerButtonsBinding="myModalButtons" title="My Modal"}}
-        <p>Modal content!</p>
-    {{/bs-modal}}

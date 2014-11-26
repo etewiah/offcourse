@@ -32,16 +32,23 @@ html, body {
   display: inline-block;
 }
 
-.navbar-default {
-background-color: #348CB2;
+.navbar-fixed-bottom {
+	min-height: 20px;
+}
+.navbar-fixed-top {
+	background-color: #348CB2;
 }
 .topic-details .panel-heading {
-background-color: #348CB2;
+	background-color: #348CB2;
+	color: white;
+}
+.offline-topics .well {
+	background-color: white;
 }
 
 .navbar-brand a{
-color: white;
-font-size: larger;
+	color: white;
+	font-size: larger;
 }
 .navbar-banner{
 	color: white;
