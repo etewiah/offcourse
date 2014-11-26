@@ -32,7 +32,8 @@
     "ember-export-application-global": "^1.0.0",
     "ember-select-2": "^1.1.1-beta1",
     "express": "^4.8.5",
-    "glob": "^4.0.5"
+    "glob": "^4.0.5",
+    "liquid-fire": "^0.15.0"
   },
   "dependencies": {
     "ember-moment": "^1.0.0"

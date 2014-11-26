@@ -1,0 +1,22 @@
+{{#liquid-with model as currentModel class="demo-container"}}
+<div class="topic-details">
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4>{{ currentModel.title }}</h4>
+    </div>
+{{!--     <div class="panel-body">
+    </div>
+ --}}
+    <ul class="list-group">
+      {{#each item in currentModel.posts }}
+      <li class="list-group-item">
+        {{post-details post=item }}
+      </li>
+      {{/each}}
+    </ul>
+
+  </div>
+
+</div>
+{{/liquid-with}}
