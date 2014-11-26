@@ -34,12 +34,6 @@ export default Ember.Route.extend({
   },
   setupController: function(controller, model) {
     controller.set('model', model);
-    // this.controller.set('offlineTopicsCount', model.content.length);
-  },
-  // deactivate: function() {
-  //   var categoryController = this.controllerFor('categories.category');
-  //   categoryController.set('isTopicView', false);
-  // }
-
+  }
 
 });

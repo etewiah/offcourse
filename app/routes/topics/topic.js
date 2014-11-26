@@ -4,7 +4,11 @@ export default Ember.Route.extend({
   actions: {
     error: function(error, transition) {
       if (error) {
-        return this.transitionTo('topics');
+        return this.transitionTo('retriever');
+        // Above handles situations where the topic searched for by the model does not exist
+        // - if I redirect to topics, it somehow thinks the topic searched for exists and 
+        // will say user has 1 topic where none exist.
+        // return this.transitionTo('topics.default');
       }
       // Return true to bubble this event to any parent route.
       return false;
@@ -14,16 +18,7 @@ export default Ember.Route.extend({
   //   debugger;
   // },
   model: function(params) {
-        debugger;
-
     var topic = this.store.find('pouch_topic', params.id);
-
-    // var url = "/t/" + params.id + ".json";
-    // var topic = $.getJSON(url).then(
-    //   function(response) {
-    //     return response;
-    //   }
-    // );
     return topic;
   },
   setupController: function(controller, model) {

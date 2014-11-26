@@ -47,28 +47,6 @@ Router.map(function() {
     });
   });
 
-  // this.resource('categories', {
-  //   path: '/retrieve/cats'
-  // }, function() {
-  //   this.route('default', {
-  //     path: '/'
-  //   });
-  //   this.resource('categories.category', {
-  //     path: '/:slug'
-  //   }, function() {
-  //     this.route('default', {
-  //       path: '/'
-  //     });
-  //     this.resource('categories.category.topic', {
-  //       path: '/:id'
-  //     }, function() {
-
-  //       this.route('default', {
-  //         path: '/'
-  //       });
-  //     });
-  //   });
-  // });
 
   // this.route('categories/category');
   // this.route('categories/category/topic');
