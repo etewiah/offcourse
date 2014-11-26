@@ -1,6 +1,8 @@
+{{#liquid-with model as currentModel class="liquid-category"}}
+
 <div class="selectable-topics">
 
-  <div class="row">
+  <div class="">
     <h3 style="margin-top:0px">Select topics below
       <small><a {{action 'saveTopicsOffline'}}>and click here to save offline</a>
       </small>
@@ -9,15 +11,15 @@
     </h3>
   </div>
 
-  <div class="row">
-    {{summary-topic-list options=model.topic_list.topics labelProperty='title' siteDetails=controller.siteDetails selection=selectedTopics previewTopicAction="previewTopic" }}
+  <div class="">
+    {{summary-topic-list options=currentModel.topic_list.topics labelProperty='title' siteDetails=controller.siteDetails selection=selectedTopics previewTopicAction="previewTopic" }}
   </div>
 
 
 <nav>
   <ul class="pagination pull-right">
     {{#if controller.previousPageNumber }}
-      {{#link-to 'retriever.site.category' controller.siteDetails.slug model.category 
+      {{#link-to 'retriever.site.category' controller.siteDetails.slug currentModel.category 
       controller.previousPageNumber tagName="li" 
         class="category-nav-item" }}
         <a {{bind-attr href="view.href"}}>previous </a>
@@ -43,3 +45,4 @@
 </nav>
 
 </div>
+{{/liquid-with}}
