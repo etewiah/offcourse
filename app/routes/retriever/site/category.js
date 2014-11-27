@@ -31,8 +31,7 @@ export default Ember.Route.extend({
         Bootstrap.GNM.push('ERROR!', 'Please select topics to save', 'error');
         return;
       } else {
-        // TODO - actually ensure topis are saved before showing this
-        // Bootstrap.GNM.push('SUCCESS!', 'Selected topics added', 'success');
+        Bootstrap.GNM.push('OK!', 'Adding selected topic...', 'success');
       }
 
       var hostUrl = this.modelFor('retriever.site').siteDetails.base_url;
@@ -44,11 +43,15 @@ export default Ember.Route.extend({
         id: hostSlug
       };
       var site = this.store.recordForId('pouch_site', hostSlug);
+      if (site.currentState.stateName === "root.empty") {
+        site.loadedData();
+      }
+      site.setProperties(siteProperties);
+      site.save();
       var siteTopics = site.get('topics');
       // PouchSite.findOrCreate(this.store, 'pouch_site', siteProperties);
       // .then(
       //   function(site){
-      //     debugger;
       //   });
 
       var parsedTopicsCount = 0;
@@ -59,7 +62,6 @@ export default Ember.Route.extend({
         var that = this;
         var result = $.getJSON(apiUrl).then(
           function(detailedTopic) {
-            // debugger;
             var namespacedId = hostSlug + "_" + detailedTopic.id;
 
             var topicProperties = {
@@ -72,27 +74,23 @@ export default Ember.Route.extend({
               hostUrl: hostUrl,
               id: namespacedId
             };
+            var topic = that.store.createRecord('pouch_topic', topicProperties);
 
             // var topic = PouchTopic.findOrCreate(that.store, 'pouch_topic', topicProperties);
-            var topic = that.store.recordForId('pouch_topic', namespacedId);
+            // var topic = that.store.recordForId('pouch_topic', namespacedId);
 
-            if (topic.currentState.stateName === "root.empty") {
-              topic.loadedData();
-            };
-
-            // topic.loadedData();
-            topic.setProperties(topicProperties);
-
+            // if (topic.currentState.stateName === "root.empty") {
+            //   topic.loadedData();
+            // }
+            // topic.setProperties(topicProperties);
+            // topic.save();
             siteTopics.pushObject(topic);
             parsedTopicsCount = parsedTopicsCount + 1;
             if (parsedTopicsCount === selectedTopics.length) {
-              if (site.currentState.stateName === "root.empty") {
-                site.loadedData();
-              };
               debugger;
-              site.save();
+                          site.save();
               Bootstrap.GNM.push('SUCCESS!', 'Selected topics added', 'success');
-            };
+            }
           }
         );
 

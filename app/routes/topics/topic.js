@@ -3,6 +3,7 @@ import Ember from 'ember';
 export default Ember.Route.extend({
   actions: {
     error: function(error, transition) {
+      debugger;
       if (error) {
         return this.transitionTo('retriever');
         // Above handles situations where the topic searched for by the model does not exist
