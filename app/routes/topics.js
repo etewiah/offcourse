@@ -13,14 +13,14 @@ export default Ember.Route.extend({
       // this.get('store').findAll('topic').invoke('destroyRecord');
       // above does not work
       var that = this;
-      // this.get('store').findAll('pouch_site').then(function(record) {
-      //   record.content.forEach(function(rec) {
-      //     Ember.run.once(this, function() {
-      //       rec.deleteRecord();
-      //       rec.save();
-      //     });
-      //   }, this);
-      // })
+      this.get('store').findAll('pouch_site').then(function(record) {
+        record.content.forEach(function(rec) {
+          Ember.run.once(this, function() {
+            rec.deleteRecord();
+            rec.save();
+          });
+        }, this);
+      });
       this.get('store').findAll('pouch_topic').then(function(record) {
         record.content.forEach(function(rec) {
           Ember.run.once(this, function() {

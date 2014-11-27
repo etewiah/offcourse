@@ -12,7 +12,7 @@ export default Ember.Route.extend({
     var topic = topics[0];
     if (topic && topic.get('data.id')) {
     	this.transitionTo('topics.topic', topic.get('data.id'));
-    };
+    }
   }
 });
 

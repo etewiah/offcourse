@@ -9,7 +9,7 @@ export default Ember.Controller.extend({
 		} else{
 			return true;
 		}
-	}.property('model.content'),
+	}.property('model.content.@each'),
 	offlineTopicsCount: function(){
 		var model = this.get('model');
 		if (model.content && model.content.length > 0) {
