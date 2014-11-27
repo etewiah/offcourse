@@ -3,6 +3,15 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   actions: {
+
+    error: function(error, transition) {
+      if (error) {
+        debugger;
+        return this.transitionTo('topics');
+      }
+      // Return true to bubble this event to any parent route.
+      return false;
+    },
     addSite: function() {
       var targetDiscourseUrl = this.controller.get('newSiteUrl');
       var valid = /^(ftp|http|https):\/\/[^ "]+$/.test(targetDiscourseUrl);

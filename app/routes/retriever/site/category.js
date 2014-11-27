@@ -75,7 +75,10 @@ export default Ember.Route.extend({
 
             // var topic = PouchTopic.findOrCreate(that.store, 'pouch_topic', topicProperties);
             var topic = that.store.recordForId('pouch_topic', namespacedId);
-            debugger;
+
+            if (topic.currentState.stateName === "root.empty") {
+              topic.loadedData();
+            };
 
             // topic.loadedData();
             topic.setProperties(topicProperties);
@@ -83,9 +86,12 @@ export default Ember.Route.extend({
             siteTopics.pushObject(topic);
             parsedTopicsCount = parsedTopicsCount + 1;
             if (parsedTopicsCount === selectedTopics.length) {
-              Bootstrap.GNM.push('SUCCESS!', 'Selected topics added', 'success');
+              if (site.currentState.stateName === "root.empty") {
+                site.loadedData();
+              };
               debugger;
               site.save();
+              Bootstrap.GNM.push('SUCCESS!', 'Selected topics added', 'success');
             };
           }
         );
