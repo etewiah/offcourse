@@ -6,7 +6,6 @@ export default Ember.Route.extend({
 
     error: function(error, transition) {
       if (error) {
-        debugger;
         return this.transitionTo('topics');
       }
       // Return true to bubble this event to any parent route.

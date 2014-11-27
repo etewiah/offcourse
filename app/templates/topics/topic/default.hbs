@@ -3,7 +3,11 @@
 
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h4 style="">{{ currentModel.title }}</h4>
+      <h4 style="">{{ currentModel.title }}
+            <small class="pull-right topic-source-url"><a target="_blank" {{bind-attr href=topicUrl }} >
+        source url</a> </small>
+      </h4>
+
     </div>
     <ul class="list-group">
       {{#each item in currentModel.posts }}

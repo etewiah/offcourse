@@ -29,7 +29,7 @@ export default Ember.Route.extend({
           });
         }, this);
       }).then(function() {
-        this.controller.set('model',[])
+        this.controller.set('model',[]);
         Bootstrap.GNM.push('SUCCESS!', 'All offline topics removed!', 'success');
       }.bind(this));
     }

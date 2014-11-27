@@ -24,8 +24,11 @@ export default Ember.Route.extend({
     // controller.set('model', model.get('data'));
     controller.set('model',model);
     var siteSlug = model.get('sourceSiteSlug');
+    var that = this;
     this.store.find('pouch_site', siteSlug).then(function(site){
-    })
+      var topicUrl = site.get('base_url') + "/t/" + that.controller.get('model.originalId');
+      that.controller.set('topicUrl',topicUrl);
+    });
   }
 
 });

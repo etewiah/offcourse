@@ -13,7 +13,7 @@ export default Ember.Route.extend({
 
   model: function(params) {
     // TODO - search pouchDB if offline
-    var apiUrl = "/remote_discourse/get_or_add_site.json?slug=" + params.slug
+    var apiUrl = "/remote_discourse/get_or_add_site.json?slug=" + params.slug;
     // Category.getSiteDetailsApiUrl(targetDiscourseUrl);
 
     // var url = "/remote_discourse/site_details.json?host=https://meta.discourse.org";

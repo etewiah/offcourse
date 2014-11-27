@@ -8,7 +8,7 @@ export default Ember.Controller.extend({
 			return false;
 		} else{
 			return true;
-		};
+		}
 	}.property('model.content'),
 	offlineTopicsCount: function(){
 		var model = this.get('model');
@@ -16,6 +16,6 @@ export default Ember.Controller.extend({
 			return model.content.length;
 		} else{
 			return 0;
-		};
+		}
 	}.property('model.content.@each')
 });

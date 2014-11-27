@@ -1,4 +1,4 @@
-import Category from './models/category'
+import Category from './models/category';
 export default function() {
   this.transition(
 	  // this.betweenModels({instanceOf: Category}),
@@ -11,4 +11,4 @@ export default function() {
     this.withinRoute('topics.topic.default'),
     this.use('toRight',  { delay: 80, duration: 800 })
   );
-};
+}
