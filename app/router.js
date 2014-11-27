@@ -7,7 +7,7 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
   this.resource('sites', {
-    path: '/sites'
+    path: '/directory'
   }, function() {
     this.resource('sites.site', {
       path: '/:slug'
