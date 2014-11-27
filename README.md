@@ -2,7 +2,9 @@
 
 This README outlines the details of collaborating on this Ember application.
 
-A short introduction of this app could easily go here.
+Please note that this application is complementary to (https://github.com/etewiah/offcourse-discourse-plugin).  To experiment with this application, you need to have an instance of discourse with the 'offcourse-discourse-plugin' installed.  Assuming your instance of discourse is running on http://localhost:3000, you would need to run this application with this command:
+
+ember server --proxy http://localhost:3000
 
 ## Prerequisites
 
@@ -39,7 +41,7 @@ Make use of the many generators for code, try `ember help generate` for more det
 
 ### Deploying
 
-Specify what it takes to deploy your app.
+This code is a proof of concept and NOT by any means production ready.  I would advice against deploying it to a production environment. 
 
 ## Further Reading / Useful Links
 
