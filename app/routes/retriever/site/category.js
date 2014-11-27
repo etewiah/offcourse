@@ -74,9 +74,9 @@ export default Ember.Route.extend({
               hostUrl: hostUrl,
               id: namespacedId
             };
-            var topic = that.store.createRecord('pouch_topic', topicProperties);
+            // var topic = that.store.createRecord('pouch_topic', topicProperties);
 
-            // var topic = PouchTopic.findOrCreate(that.store, 'pouch_topic', topicProperties);
+            var topic = PouchTopic.findOrCreate(that.store, 'pouch_topic', topicProperties);
             // var topic = that.store.recordForId('pouch_topic', namespacedId);
 
             // if (topic.currentState.stateName === "root.empty") {
@@ -84,11 +84,10 @@ export default Ember.Route.extend({
             // }
             // topic.setProperties(topicProperties);
             // topic.save();
-            siteTopics.pushObject(topic);
+            // siteTopics.pushObject(topic);
             parsedTopicsCount = parsedTopicsCount + 1;
             if (parsedTopicsCount === selectedTopics.length) {
-              debugger;
-                          site.save();
+              // site.save();
               Bootstrap.GNM.push('SUCCESS!', 'Selected topics added', 'success');
             }
           }

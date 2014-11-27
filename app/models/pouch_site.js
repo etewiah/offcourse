@@ -15,26 +15,25 @@ var PouchSite = DS.Model.extend({
 });
 
 // TODO - this is duplicated in pouch_topic - move to one place....
-PouchSite.reopenClass({
-  findOrCreate: function(store, type, properties) {
-    return store.find(type, properties.id).then(null, (function() {
-      return function() {
-        var record;
-        // if (reason.status === 404) {
-          record = store.recordForId(type, properties.id);
-          record.loadedData();
-          record.setProperties(properties);
-          debugger;
-          return record;
-          // return record.save();
+// PouchSite.reopenClass({
+//   findOrCreate: function(store, type, properties) {
+//     return store.find(type, properties.id).then(null, (function() {
+//       return function() {
+//         var record;
+//         // if (reason.status === 404) {
+//           record = store.recordForId(type, properties.id);
+//           record.loadedData();
+//           record.setProperties(properties);
+//           return record;
+//           // return record.save();
 
-        // } else {
-        //   throw reason;
-        // }
-      };
-    })(this));
-  }
-});
+//         // } else {
+//         //   throw reason;
+//         // }
+//       };
+//     })(this));
+//   }
+// });
 
 
 export default PouchSite;

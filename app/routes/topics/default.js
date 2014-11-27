@@ -9,10 +9,10 @@ export default Ember.Route.extend({
   beforeModel: function(params) {
     var topics = this.modelFor('topics').content;
     // redirect to the first topic
-    // var topic = topics[0];
-    // if (topic && topic.get('data.id')) {
-    // 	this.transitionTo('topics.topic', topic.get('data.id'));
-    // };
+    var topic = topics[0];
+    if (topic && topic.get('data.id')) {
+    	this.transitionTo('topics.topic', topic.get('data.id'));
+    };
   }
 });
 

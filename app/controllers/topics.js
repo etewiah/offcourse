@@ -7,9 +7,7 @@ export default Ember.Controller.extend({
 		if (model.content && model.content.length > 0) {
 			return false;
 		} else{
-
-
-			return false;
+			return true;
 		};
 	}.property('model.content'),
 	offlineTopicsCount: function(){

@@ -8,7 +8,6 @@ export default Ember.Route.extend({
   actions: {
     destroyAllOfflineTopics: function() {
       //   this.store.find('topic').then(function(topics) {
-      //     debugger;
       //     topics.destroy(); 
       //   });
       // this.get('store').findAll('topic').invoke('destroyRecord');
@@ -37,14 +36,12 @@ export default Ember.Route.extend({
   },
 
   model: function(params) {
-    var sites = this.store.find('pouch_site');
-    return sites;
-
-    // var topics = this.store.find('pouch_topic');
-    // return topics;
+    // var sites = this.store.find('pouch_site');
+    // return sites;
+    var topics = this.store.find('pouch_topic');
+    return topics;
   },
   setupController: function(controller, model) {
-    debugger;
     controller.set('model', model);
   }
 
