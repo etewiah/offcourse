@@ -1,29 +1,12 @@
 <div class="row">
 
   <div class="col-md-6">
-    <form {{action "addSite" on="submit"}}>
+    <form {{action "addSite" on="submit" }}>
       <h2>Add a discourse site</h2>
       <div class="form-group">
         <label for='name'>Url:</label>
-        {{input placeholder="eg: https://meta.discourse.org" value=domainUrl id="domain-url"
-           autofocus="autofocus" class="form-control"}}
+        {{input placeholder="eg: https://meta.discourse.org" value=domainUrl id="domain-url" autofocus="autofocus" class="form-control"}}
       </div>
-{{!-- 
-      <div class="form-group">
-        <label for='email'>Email</label>
-        {{input value=email id='email' class="form-control"}}
-      </div>
- --}}
-{{!--       <div class="form-group">
-        <label for='password'>Password</label>
-        {{input type="password" value=password id='password' class="form-control"}}
-      </div>
-
-      <div class="form-group">
-        <label for='password-confirmation'>Password confirmation</label>
-        {{input type="password" value=passwordConfirmation id='password-confirmation' class="form-control"}}
-      </div> --}}
-
       <button class="btn btn-primary btn-block" type="submit">Save</button>
     </form>
   </div>
@@ -38,16 +21,11 @@
 <div class="row offline-topics">
   <div class="col-md-3">
     <div class="bs-sidebar hidden-print affix-top" role="complementary">
-      <ul class="nav bs-sidenav">
-        <ul>
 
-          {{#each site in model }}
-          <li>
-            {{#link-to 'sites.site' site.slug }} {{ site.display_name }} {{/link-to}}
-          </li>
-          {{/each}}
-
-        </ul>
+      <ul class="nav nav-pills nav-stacked">
+        {{#each site in model }} {{#link-to 'sites.site' site.slug tagName="li" class="topic-nav-item" }}
+        <a {{bind-attr href="view.href" }}>{{ site.display_name }}</a> {{/link-to}} {{/each}}
+      </ul>
 
     </div>
   </div>
@@ -55,4 +33,3 @@
     {{ outlet }}
   </div>
 </div>
-

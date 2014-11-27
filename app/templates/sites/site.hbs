@@ -1,27 +1,26 @@
-<div class="row">
-    Site details
-</div>
-
-<div class="topic-details">
+{{#liquid-with model as currentModel class="liquid-directory"}}
+<div class="site-details">
 
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h4>{{ model.display_name }}</h4>
+      <h4 style="">
+            <span class="site-source-url"><a target="_blank" {{bind-attr href=currentModel.base_url }} >
+        {{ currentModel.display_name }}</a> </span>
+      </h4>
     </div>
+
     <div class="panel-body">
-     <p>{{ model.description }}</p>
+      <p>{{ model.description }}</p>
     </div>
-
-{{!--     <ul class="list-group">
-
-      {{#each item in model.post_stream.posts }}
+    <ul class="list-group">
+      {{#each item in currentModel.posts }}
       <li class="list-group-item">
-        {{{ item.cooked }}}
+        {{post-details post=item }}
       </li>
       {{/each}}
-
-    </ul> --}}
+    </ul>
 
   </div>
 
 </div>
+{{/liquid-with}}
