@@ -24,6 +24,11 @@ export default Ember.Route.extend({
   setupController: function(controller, model) {
     // controller.set('model', model.get('data'));
     controller.set('model',model);
+    debugger;
+    var siteSlug = model.get('sourceSiteSlug');
+    this.store.find('pouch_site', siteSlug).then(function(site){
+      debugger;
+    })
   }
 
 });

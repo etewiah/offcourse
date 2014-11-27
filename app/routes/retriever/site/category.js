@@ -1,5 +1,7 @@
 import Ember from 'ember';
 import Topic from '../../../models/topic';
+import PouchTopic from '../../../models/pouch_topic';
+import PouchSite from '../../../models/pouch_site';
 // import TopicModalView from '../../../views/modal/topic';
 
 export default Ember.Route.extend({
@@ -27,13 +29,30 @@ export default Ember.Route.extend({
       var selectedTopics = this.controller.get('selectedTopics');
       if (!selectedTopics || selectedTopics.length < 1) {
         Bootstrap.GNM.push('ERROR!', 'Please select topics to save', 'error');
+        return;
       } else {
         // TODO - actually ensure topis are saved before showing this
-        Bootstrap.GNM.push('SUCCESS!', 'Selected topics added', 'success');
+        // Bootstrap.GNM.push('SUCCESS!', 'Selected topics added', 'success');
       }
 
       var hostUrl = this.modelFor('retriever.site').siteDetails.base_url;
       var hostSlug = this.modelFor('retriever.site').siteDetails.slug;
+
+      var siteProperties = {
+        slug: hostSlug,
+        base_url: hostUrl,
+        id: hostSlug
+      };
+      var site = this.store.recordForId('pouch_site', hostSlug);
+      var siteTopics = site.get('topics');
+      // PouchSite.findOrCreate(this.store, 'pouch_site', siteProperties);
+      // .then(
+      //   function(site){
+      //     debugger;
+      //   });
+
+      var parsedTopicsCount = 0;
+
       selectedTopics.forEach(function(topic) {
 
         var apiUrl = Topic.getTopicDetailsApiUrl(topic.id, hostUrl);
@@ -48,10 +67,26 @@ export default Ember.Route.extend({
               post_stream: detailedTopic.post_stream,
               originalId: detailedTopic.id,
               sourceSiteSlug: hostSlug,
+              siteId: hostSlug,
+              site_id: hostSlug,
+              hostUrl: hostUrl,
               id: namespacedId
             };
 
-            Topic.findOrCreate(that.store, 'pouch_topic', topicProperties);
+            // var topic = PouchTopic.findOrCreate(that.store, 'pouch_topic', topicProperties);
+            var topic = that.store.recordForId('pouch_topic', namespacedId);
+            debugger;
+
+            // topic.loadedData();
+            topic.setProperties(topicProperties);
+
+            siteTopics.pushObject(topic);
+            parsedTopicsCount = parsedTopicsCount + 1;
+            if (parsedTopicsCount === selectedTopics.length) {
+              Bootstrap.GNM.push('SUCCESS!', 'Selected topics added', 'success');
+              debugger;
+              site.save();
+            };
           }
         );
 
@@ -63,7 +98,7 @@ export default Ember.Route.extend({
 
   model: function(params) {
     var pageNumber = params.page_number || "1";
-    this.set('pageNumber',pageNumber);
+    this.set('pageNumber', pageNumber);
     // var siteModel = this.modelFor('retriever.site');
     var siteSlug = this.paramsFor('retriever.site').slug;
     var apiUrl = "/remote_discourse/topics_per_category.json?slug=" + siteSlug +
@@ -81,17 +116,16 @@ export default Ember.Route.extend({
   setupController: function(controller, model) {
     controller.set('model', model);
     controller.set('selectedTopics', []);
-        // controller.set('siteDetails', this.modelFor('retriever.site').get('siteDetails'));
+    // controller.set('siteDetails', this.modelFor('retriever.site').get('siteDetails'));
     controller.set('siteDetails', this.modelFor('retriever.site').siteDetails);
     var hasMorePages = model.topic_list.more_topics_url ? true : false;
     var pageNumber = this.get('pageNumber');
     // controller.set('hasMorePages', hasMorePages);
-    debugger;
     if (parseInt(pageNumber) > 1) {
-      controller.set('previousPageNumber', (parseInt(pageNumber) - 1 ) );
+      controller.set('previousPageNumber', (parseInt(pageNumber) - 1));
     }
     if (hasMorePages && pageNumber) {
-      controller.set('nextPageNumber', (parseInt(pageNumber) +1 ) );
+      controller.set('nextPageNumber', (parseInt(pageNumber) + 1));
     }
   }
 });

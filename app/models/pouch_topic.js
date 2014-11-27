@@ -2,11 +2,14 @@ import DS from 'ember-data';
 import Ember from 'ember';
 // import PouchPost from './pouch_post';
 
+
 var PouchTopic = DS.Model.extend({
   // primaryKey: 'id',
-  // id: DS.attr('string'),
+  siteId: DS.attr('string'),
+  site_id: DS.attr('string'),
+  site: DS.belongsTo('pouch_site'),
   originalId: DS.attr('string'),
-  sourceSiteId: DS.attr('string'),
+  sourceSiteSlug: DS.attr('string'),
   title: DS.attr('string'),
   post_stream: DS.attr('raw'),
   rev: DS.attr('string'),
@@ -19,13 +22,6 @@ var PouchTopic = DS.Model.extend({
 });
 
 PouchTopic.reopenClass({
-  getTopicDetailsApiUrl: function(TopicId, targetDiscourseUrl) {
-    var url = "/t/" + TopicId + ".json";
-    if (targetDiscourseUrl) {
-      url = "/remote_discourse/topic_details.json?topic_id=" + TopicId + "&host=" + targetDiscourseUrl;
-    }
-    return url;
-  },
   findOrCreate: function(store, type, properties) {
     return store.find(type, properties.id).then(null, (function() {
       return function() {
