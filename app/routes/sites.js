@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Route.extend({
   actions: {
     showAddSiteModal: function() {
-      debugger;
+      // debugger;
       this.controllerFor('modal/add_site').set('model', this.controller.model);
       this.send('openModal', 'modal/add_site');
     },

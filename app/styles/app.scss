@@ -81,8 +81,10 @@ html, body {
 	color: white;
 	font-size: larger;
 }
-.navbar-banner{
+.navbar-banner, .navbar-default .navbar-nav > li > a{
 	color: white;
+}
+.navbar-banner{
 	font-size: smaller;
 }
 
