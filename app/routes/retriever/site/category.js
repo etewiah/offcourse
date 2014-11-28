@@ -10,7 +10,6 @@ export default Ember.Route.extend({
       var hostUrl = this.controller.get('siteDetails.base_url');
       // this.get('parentView.siteDetails.base_url');
       // this.modelFor('retriever.site').siteDetails.base_url;
-
       var apiUrl = Topic.getTopicDetailsApiUrl(topic.id, hostUrl);
       var that = this;
       var result = $.getJSON(apiUrl).then(

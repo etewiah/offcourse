@@ -24,13 +24,13 @@ export default Ember.Route.extend({
       var apiUrl = "/remote_discourse/get_or_add_site.json?host=" + targetDiscourseUrl;
       $.getJSON(apiUrl).then(
         function(response) {
-          var site = this.store.createRecord('site', {
-            display_name: response.display_name,
-            description: response.description,
-            slug: response.slug,
-            base_url: response.base_url
-          });
-          site.save();
+          // var site = this.store.createRecord('site', {
+          //   display_name: response.display_name,
+          //   description: response.description,
+          //   slug: response.slug,
+          //   base_url: response.base_url
+          // });
+          // site.save();
           response.text = response.base_url;
           // have to do above as select2 dropdown requires text field
           this.controller.model.pushObject(response);

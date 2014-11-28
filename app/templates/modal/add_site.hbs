@@ -1,0 +1,22 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button class="close" type="button" {{action cancel on="click"}}>x</button>
+      <h4 class="modal-title">Add a discourse site</h4>
+    </div>
+    <div class="modal-body">
+
+    <form {{action "addSite" on="submit" }}>
+      <div class="form-group">
+        <label for='name'>Url:</label>
+        {{input placeholder="eg: https://meta.discourse.org" value=siteUrl id="site-url" 
+        autofocus="autofocus" class="form-control"}}
+      </div>
+    </form>
+
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-primary" {{action addSite on="click"}}>Save</button>
+    </div>
+  </div>
+</div>
