@@ -2,6 +2,7 @@ import ModalController from '../modal';
 var AddSiteModalController;
 
 AddSiteModalController = ModalController.extend({
+  needs: ['sites'],
   siteUrlValidation: function() {
     if (!this.get('validate')) {
       return;
@@ -23,7 +24,6 @@ AddSiteModalController = ModalController.extend({
         failed: true,
         reason: "Invalid url"
       };
-      // // debugger;
       // this.set('siteUrlValidation', siteUrlValidation);
       // // alert('Sorry, invalid url');
       // return;
@@ -52,6 +52,9 @@ AddSiteModalController = ModalController.extend({
         this.set('validate', true);
         return;
       }
+      else{
+      	this.set('validate', false);
+      }
 
       // var domain = targetDiscourseUrl.split('/')[2] || targetDiscourseUrl.split('/')[0];
       // var domainId = domain.replace(/\./g, '_');
@@ -59,23 +62,27 @@ AddSiteModalController = ModalController.extend({
       var apiUrl = "/remote_discourse/get_or_add_site.json?host=" + targetDiscourseUrl;
       $.getJSON(apiUrl).then(
         function(response) {
-          var site = this.store.createRecord('site', {
-            display_name: response.display_name,
-            description: response.description,
-            slug: response.slug,
-            base_url: response.base_url
-          });
-          site.save();
-          debugger;
-          // response.text = response.base_url;
-          // have to do above as select2 dropdown requires text field
-          this.controller.model.pushObject(response);
-          this.controller.set('currentSite', response);
+          // var site = this.store.createRecord('site', {
+          //   display_name: response.display_name,
+          //   description: response.description,
+          //   slug: response.slug,
+          //   base_url: response.base_url
+          // });
+          // site.save();
+          // TODO
+          this.get('controllers.sites.model').pushObject(response);
+          this.transitionToRoute('sites.site', response.slug);
+
+          // this.get('controllers.sites').set('currentSite', response);
           return this.send('closeModal');
 
         }.bind(this),
         function(error) {
-          debugger;
+          var serverError = {
+            failed: true,
+            reason: "Sorry, it seems this is not a valid Discourse server Url"
+          };
+          this.set('siteUrlValidation', serverError);
         }.bind(this)
       );
 

@@ -9,10 +9,12 @@ Router.map(function() {
   this.resource('sites', {
     path: '/directory'
   }, function() {
+    this.route('default', {
+      path: '/'
+    });
     this.resource('sites.site', {
       path: '/:slug'
     }, function() {
-
       this.route('default', {
         path: '/'
       });
